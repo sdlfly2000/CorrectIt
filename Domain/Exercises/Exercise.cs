@@ -8,13 +8,11 @@ namespace Domain
     public class Exercise : IExercise
     {
         private readonly IQuestionAspect _questionAspect;
-        private List<IAnswer> _answers;
+
         public Exercise(
-            IQuestionAspect questionAspect, 
-            List<IAnswer> answers)
+            IQuestionAspect questionAspect)
         {
             _questionAspect = questionAspect;
-            _answers = answers ?? new List<IAnswer>();
         }
 
         public string QuestionCode { get => _questionAspect.QuestionCode; set => _questionAspect.QuestionCode = value; }
@@ -23,6 +21,6 @@ namespace Domain
         public DateTime QuestionCreatedOn { get => _questionAspect.QuestionCreatedOn; set => _questionAspect.QuestionCreatedOn = value; }
         public string QuestionCreatedBy { get => _questionAspect.QuestionCreatedBy; set => _questionAspect.QuestionCreatedBy = value; }
         public string QuestionComments { get => _questionAspect.QuestionComments; set => _questionAspect.QuestionComments = value; }
-        public List<IAnswer> Answers { get => _answers; set => _answers = value; }
+        public List<IAnswer> Answers { get => _questionAspect.Answers; set => _questionAspect.Answers = value; }
     }
 }

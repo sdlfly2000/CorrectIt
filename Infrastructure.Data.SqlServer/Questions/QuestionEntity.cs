@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Infrastructure.Data.SqlServer.Answers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Infrastructure.Data.SqlServer.Answers;
 
 namespace Infrastructure.Data.SqlServer.Questions
 {

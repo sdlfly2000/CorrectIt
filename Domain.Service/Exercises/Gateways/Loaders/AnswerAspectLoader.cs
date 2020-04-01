@@ -1,10 +1,10 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.Exercises.Aspects;
-using Domain.Service.Exercises.Mappers;
+using Domain.Service.Exercises.Gateways.Loaders.Mappers;
 using Infrastructure.Data.SqlServer;
 using System.Linq;
 
-namespace Domain.Service.Exercises.Loaders
+namespace Domain.Service.Exercises.Gateways.Loaders
 {
     [ServiceLocate(typeof(IAnswerAspectLoader))]
     public class AnswerAspectLoader : IAnswerAspectLoader
@@ -19,7 +19,7 @@ namespace Domain.Service.Exercises.Loaders
             _aspectMapper = aspectMapper;
         }
 
-        public AnswerAspect Load(string answerCode)
+        public IAnswerAspect Load(string answerCode)
         {
             var answerEntity = _context.Answers.FirstOrDefault(a => a.AnswerId.Equals(answerCode));
             return _aspectMapper.Map(answerEntity);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Exercises.Aspects
 {
@@ -12,5 +11,6 @@ namespace Domain.Exercises.Aspects
         public DateTime QuestionCreatedOn { get; set; }
         public string QuestionCreatedBy { get; set; }
         public string QuestionComments { get; set; }
+        public List<IAnswer> Answers { get; set; } = new List<IAnswer>();
     }
 }

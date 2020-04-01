@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 using System.Linq;
-using System;
+using System.Reflection;
 
 namespace Common.Core.DependencyInjection
 {

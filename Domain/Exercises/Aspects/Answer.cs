@@ -5,6 +5,7 @@ namespace Domain.Exercises.Aspects
     public class Answer : IAnswer
     {
         private readonly IAnswerAspect _aspect;
+
         public Answer(IAnswerAspect aspect)
         {
             _aspect = aspect;

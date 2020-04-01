@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Infrastructure.Data.SqlServer.Questions;
+﻿using Common.Core.DependencyInjection;
 using Infrastructure.Data.SqlServer.Answers;
-using Common.Core.DependencyInjection;
-using System.Data.Common;
+using Infrastructure.Data.SqlServer.Questions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.SqlServer
 {

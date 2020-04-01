@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Exercises\Synchronizers\" />
+    <Folder Include="Exercises\Gateways\Persistors\" />
+    <Folder Include="Exercises\Gateways\Persistors\Synchronizers\" />
   </ItemGroup>
 
   <ItemGroup>

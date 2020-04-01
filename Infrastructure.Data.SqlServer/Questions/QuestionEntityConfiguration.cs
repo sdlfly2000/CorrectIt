@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.Data.SqlServer.Questions
 {
@@ -22,7 +18,7 @@ namespace Infrastructure.Data.SqlServer.Questions
             builder.Property(e => e.QuestionCreatedBy).HasColumnName("questionCreatedBy").HasColumnType("nvarchar(max)");
             builder.Property(e => e.QuestionComments).HasColumnName("questionComments").HasColumnType("nvarchar(max)");
             builder.Property(e => e.QuestionCreatedOn).HasColumnName("questionCreatedOn").HasColumnType("datetime");
-                            
+
             builder.HasKey("QuestionId");
             builder.HasMany(e => e.Answers).WithOne();
             builder.ToTable("Questions");

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Infrastructure.Data.SqlServer.Questions;
+using System;
 using System.ComponentModel.DataAnnotations;
-using Infrastructure.Data.SqlServer.Questions;
 
 namespace Infrastructure.Data.SqlServer.Answers
 {

@@ -2,7 +2,7 @@
 using Domain.Exercises.Aspects;
 using Infrastructure.Data.SqlServer.Answers;
 
-namespace Domain.Service.Exercises.Mappers
+namespace Domain.Service.Exercises.Gateways.Loaders.Mappers
 {
     [ServiceLocate(typeof(IAnswerAspectMapper))]
     public class AnswerAspectMapper : IAnswerAspectMapper
@@ -11,7 +11,7 @@ namespace Domain.Service.Exercises.Mappers
         {
         }
 
-        public AnswerAspect Map(AnswerEntity entity)
+        public IAnswerAspect Map(AnswerEntity entity)
         {
             return new AnswerAspect
             {

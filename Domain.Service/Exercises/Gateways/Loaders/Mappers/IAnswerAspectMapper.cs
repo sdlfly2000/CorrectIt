@@ -1,10 +1,10 @@
 ﻿using Domain.Exercises.Aspects;
 using Infrastructure.Data.SqlServer.Answers;
 
-namespace Domain.Service.Exercises.Mappers
+namespace Domain.Service.Exercises.Gateways.Loaders.Mappers
 {
     public interface IAnswerAspectMapper
     {
-        AnswerAspect Map(AnswerEntity entity);
+        IAnswerAspect Map(AnswerEntity entity);
     }
 }
