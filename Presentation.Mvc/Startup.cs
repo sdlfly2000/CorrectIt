@@ -1,12 +1,12 @@
+using Common.Core.DependencyInjection;
+using Infrastructure.Data.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Infrastructure.Data.SqlServer;
-using Microsoft.EntityFrameworkCore;
-using Common.Core.DependencyInjection;
 
 namespace Presentation.Mvc
 {
@@ -32,7 +32,7 @@ namespace Presentation.Mvc
             DIModule.RegisterDependency(services);
 
             services.AddDbContext<CorrectItDbContext>(
-                options => 
+                options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("CorrectIt"),
                         b => b.MigrationsAssembly("Infrastructure.Data.SqlServer")));

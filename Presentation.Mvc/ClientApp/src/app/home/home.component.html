@@ -1,0 +1,26 @@
+<h1 class="tableLabel">Questions</h1>
+
+<p *ngIf="!questions"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="questions">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Category</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Created On</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let question of qeustions">
+      <td>{{ question.QuestionCode }}</td>
+      <td>{{ question.QuestionCategory }}</td>
+      <td>{{ question.QuestionTitle }}</td>
+      <td>{{ question.QuestionCreatedBy }}</td>
+      <td>{{ question.QuestionCreatedOn }}</td>
+      <td>{{ question.QuestionComments }}</td>
+    </tr>
+  </tbody>
+</table>

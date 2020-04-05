@@ -31,8 +31,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\home\Models\question.model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Common.Core.DependencyInjection\Common.Core.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Domain.Service\Domain.Service.csproj" />
     <ProjectReference Include="..\Infrastructure.Data.SqlServer\Infrastructure.Data.SqlServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\home\Models\question.model.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

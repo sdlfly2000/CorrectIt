@@ -1,31 +1,27 @@
-﻿using System.Collections.Generic;
-using Infrastructure.Data.SqlServer;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Presentation.Mvc.Controllers.Actions;
+using Presentation.Mvc.Models.Questions;
+using System.Collections.Generic;
 
 namespace Presentation.Mvc.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        private readonly ICorrectItDbContext _context;
-        public QuestionController(ICorrectItDbContext context)
+        private readonly IQuestionAction _questionAction;
+
+        public QuestionController(
+            IQuestionAction questionAction)
         {
-            _context = context;
+            _questionAction = questionAction;
         }
 
         // GET: api/Question
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<QuestionModel> Get()
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Question/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
+            return _questionAction.Get();  
         }
 
         // POST: api/Question
@@ -37,12 +33,6 @@ namespace Presentation.Mvc.Controllers
         // PUT: api/Question/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
         {
         }
     }
