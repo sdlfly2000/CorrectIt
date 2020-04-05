@@ -1,8 +1,10 @@
-interface QuestionModel {
-  QuestionCode: string;
-  QuestionCategory: string;
-  QuestionTitle: string;
-  QuestionCreatedOn: Date;
-  QuestionCreatedBy: string;
-  QuestionComments: string
+export class QuestionModel {
+  constructor() { }
+
+  public QuestionCode: string;
+  public QuestionCategory: string;
+  public QuestionTitle: string;
+  public QuestionCreatedBy: string;
+  public QuestionComments: string;
+  public QuestionCreatedOn: Date;
 }

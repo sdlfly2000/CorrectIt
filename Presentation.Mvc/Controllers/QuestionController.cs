@@ -21,7 +21,7 @@ namespace Presentation.Mvc.Controllers
         [HttpGet]
         public IEnumerable<QuestionModel> Get()
         {
-            return _questionAction.Get();  
+            return _questionAction.Get();
         }
 
         // POST: api/Question

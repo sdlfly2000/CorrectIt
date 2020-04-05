@@ -34,8 +34,8 @@ namespace Presentation.Mvc.Controllers.Actions
                 QuestionCode = exercise.QuestionCode,
                 QuestionCategory = exercise.QuestionCategory,
                 QuestionTitle = exercise.QuestionTitle,
-                QuestionCreatedOn = exercise.QuestionCreatedOn,
                 QuestionCreatedBy = exercise.QuestionCreatedBy,
+                QuestionCreatedOn = exercise.QuestionCreatedOn,
                 QuestionComments = exercise.QuestionComments
             };
         }

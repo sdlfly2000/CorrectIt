@@ -5,7 +5,6 @@
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="questions">
   <thead>
     <tr>
-      <th>Code</th>
       <th>Category</th>
       <th>Title</th>
       <th>Created By</th>
@@ -14,12 +13,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let question of qeustions">
-      <td>{{ question.QuestionCode }}</td>
+    <tr *ngFor="let question of questions">
       <td>{{ question.QuestionCategory }}</td>
       <td>{{ question.QuestionTitle }}</td>
       <td>{{ question.QuestionCreatedBy }}</td>
-      <td>{{ question.QuestionCreatedOn }}</td>
+      <td>{{ question.QuestionCreatedOn | date:'short' }}</td>
       <td>{{ question.QuestionComments }}</td>
     </tr>
   </tbody>

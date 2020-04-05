@@ -26,7 +26,9 @@ namespace Domain.Service.Exercises.Gateways.Loaders.Mappers
                 QuestionComments = entity.QuestionComments,
                 QuestionCreatedBy = entity.QuestionCreatedBy,
                 QuestionCreatedOn = entity.QuestionCreatedOn,
-                Answers = entity.Answers.Select(a => new Answer(_answerMapper.Map(a))).ToList<IAnswer>()
+                Answers = entity.Answers != null
+                           ? entity.Answers.Select(a => new Answer(_answerMapper.Map(a))).ToList<IAnswer>()
+                           : null
             };
         }
     }
