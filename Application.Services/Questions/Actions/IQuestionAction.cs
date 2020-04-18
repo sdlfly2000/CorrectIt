@@ -1,7 +1,7 @@
-﻿using Presentation.Mvc.Models.Questions;
+﻿using Application.Services.Questions.Models;
 using System.Collections.Generic;
 
-namespace Presentation.Mvc.Controllers.Actions
+namespace Application.Services.Questions.Actions
 {
     public interface IQuestionAction
     {

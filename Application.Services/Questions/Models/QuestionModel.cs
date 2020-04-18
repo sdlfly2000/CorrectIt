@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Presentation.Mvc.Models.Questions
+namespace Application.Services.Questions.Models
 {
     public class QuestionModel
     {

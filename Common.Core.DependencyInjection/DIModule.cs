@@ -10,7 +10,7 @@ namespace Common.Core.DependencyInjection
         {
             RegisterDomain(services, "Infrastructure.Data.SqlServer");
             RegisterDomain(services, "Domain.Service");
-            RegisterDomain(services, "Presentation.Mvc");
+            RegisterDomain(services, "Application.Service");
         }
 
         #region Private Methods

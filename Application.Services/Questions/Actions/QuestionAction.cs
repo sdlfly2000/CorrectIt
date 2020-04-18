@@ -1,11 +1,11 @@
-﻿using Common.Core.DependencyInjection;
+﻿using Application.Services.Questions.Models;
+using Common.Core.DependencyInjection;
 using Domain.Exercises;
 using Domain.Service.Exercises.Gateways;
-using Presentation.Mvc.Models.Questions;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Presentation.Mvc.Controllers.Actions
+namespace Application.Services.Questions.Actions
 {
     [ServiceLocate(typeof(IQuestionAction))]
     public class QuestionAction : IQuestionAction
@@ -13,7 +13,7 @@ namespace Presentation.Mvc.Controllers.Actions
         private readonly IExerciseGateway _exerciseGateway;
 
         public QuestionAction(
-            IExerciseGateway exeriseGateway )
+            IExerciseGateway exeriseGateway)
         {
             _exerciseGateway = exeriseGateway;
         }
