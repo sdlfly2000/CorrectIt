@@ -1,8 +1,8 @@
 ﻿using Application.Services.Questions.Contractors;
 
-namespace Application.Services.Questions.Actions
+namespace Application.Services.Questions
 {
-    public interface IQuestionAction
+    public interface IQuestionService
     {
         QuestionsResponse Get();
         QuestionsResponse Get(QuestionsRequest request);

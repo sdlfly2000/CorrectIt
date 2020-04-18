@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Presentation.Mvc.Controllers.Actions;
-using Presentation.Mvc.Models.Questions;
+﻿using Application.Questions.Models;
+using Application.Services.Questions;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace Presentation.Mvc.Controllers
@@ -9,19 +9,19 @@ namespace Presentation.Mvc.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        private readonly IQuestionAction _questionAction;
+        private readonly IQuestionService _questionService;
 
         public QuestionController(
-            IQuestionAction questionAction)
+            IQuestionService questionService)
         {
-            _questionAction = questionAction;
+            _questionService = questionService;
         }
 
         // GET: api/Question
         [HttpGet]
         public IEnumerable<QuestionModel> Get()
         {
-            return _questionAction.Get();
+            return _questionService.Get().QuestionModels;
         }
 
         // POST: api/Question

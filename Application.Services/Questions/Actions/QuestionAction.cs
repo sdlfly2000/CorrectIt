@@ -1,4 +1,5 @@
-﻿using Application.Services.Questions.Models;
+﻿using Application.Questions.Models;
+using Application.Services.Questions.Contractors;
 using Common.Core.DependencyInjection;
 using Domain.Exercises;
 using Domain.Service.Exercises.Gateways;
@@ -18,12 +19,19 @@ namespace Application.Services.Questions.Actions
             _exerciseGateway = exeriseGateway;
         }
 
-        public IEnumerable<QuestionModel> Get()
+        public QuestionsResponse Get()
         {
             var exercises = _exerciseGateway.LoadAll();
 
-            return exercises.Select(e => Map(e)).ToList();
+            return new QuestionsResponse
+            {
+                QuestionModels = exercises.Select(e => Map(e)).ToList()
+            };
+        }
 
+        public QuestionsResponse Get(QuestionsRequest request)
+        {
+            throw new System.NotImplementedException();
         }
 
         #region Private Methods

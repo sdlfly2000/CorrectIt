@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{2C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{92FAE531-9509-41DF-A4C7-B2C4C2060E78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Service", "Domain.Service\Domain.Service.csproj", "{3EE1F0D3-6452-4C4B-85A1-0B54CBF4B58F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Services", "Domain.Service\Domain.Services.csproj", "{3EE1F0D3-6452-4C4B-85A1-0B54CBF4B58F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Common", "5-Common", "{76A6533C-20DF-4D17-BC32-1018BB873FC7}"
 EndProject
@@ -27,11 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AAEEB17E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{3A7711EF-1D4B-4287-A040-C58E7F82B2AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService.Image.Receiver", "WorkerService.Image.Receiver\WorkerService.Image.Receiver.csproj", "{A2550CDF-494B-44B8-A8E6-71523E9EE92B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerService.Image.Receiver", "WorkerService.Image.Receiver\WorkerService.Image.Receiver.csproj", "{A2550CDF-494B-44B8-A8E6-71523E9EE92B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services", "Application.Services\Application.Services.csproj", "{7BA9A24A-8014-4E54-8EC9-5CE01AC05A7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Services", "Application.Services\Application.Services.csproj", "{7BA9A24A-8014-4E54-8EC9-5CE01AC05A7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{82043709-5E74-45C1-9D2D-22FCC49948B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{82043709-5E74-45C1-9D2D-22FCC49948B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
