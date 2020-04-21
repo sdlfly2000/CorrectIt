@@ -7,14 +7,14 @@ using Domain.Service.Exercises.Gateways.Criteria;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Application.Services.Questions.Actions
+namespace Application.Services.Questions.Processes
 {
-    [ServiceLocate(typeof(IQuestionAction))]
-    public class QuestionAction : IQuestionAction
+    [ServiceLocate(typeof(IQuestionProcess))]
+    public class QuestionProcess : IQuestionProcess
     {
         private readonly IExerciseGateway _exerciseGateway;
 
-        public QuestionAction(
+        public QuestionProcess(
             IExerciseGateway exeriseGateway)
         {
             _exerciseGateway = exeriseGateway;

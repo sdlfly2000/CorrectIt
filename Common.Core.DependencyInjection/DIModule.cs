@@ -11,6 +11,7 @@ namespace Common.Core.DependencyInjection
             RegisterDomain(services, "Infrastructure.Data.SqlServer");
             RegisterDomain(services, "Domain.Services");
             RegisterDomain(services, "Application.Services");
+            RegisterDomain(services, "Application.WorkerService");
         }
 
         #region Private Methods
