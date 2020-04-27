@@ -2,7 +2,7 @@
 {
     public interface IImageReceiverServer
     {
-        void Start(int port);
+        void Start();
         void Stop();
     }
 }

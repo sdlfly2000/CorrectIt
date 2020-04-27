@@ -1,5 +1,5 @@
 using Common.Core.DependencyInjection;
-using Infrastructure.Data.SqlServer;
+using Infrastructure.Data.Sql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -33,9 +33,12 @@ namespace Presentation.Mvc
 
             services.AddDbContext<CorrectItDbContext>(
                 options =>
-                    options.UseSqlServer(
-                        Configuration.GetConnectionString("CorrectIt"),
-                        b => b.MigrationsAssembly("Infrastructure.Data.SqlServer")));
+                    options.UseMySql(
+                        Configuration.GetConnectionString("CorrectItWeb"),
+                        b => 
+                        { 
+                            b.MigrationsAssembly("Infrastructure.Data.Sql");     
+                        }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

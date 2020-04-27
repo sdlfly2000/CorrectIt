@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Core.DependencyInjection\Common.Core.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Common.Core.TcpServer\Common.Core.TcpServer.csproj" />
   </ItemGroup>
 
 </Project>

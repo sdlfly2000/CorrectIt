@@ -1,9 +1,9 @@
 using Common.Core.DependencyInjection;
-using Infrastructure.Data.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Infrastructure.Data.Sql;
 
 namespace WorkerService.Image.Receiver
 {
@@ -23,9 +23,9 @@ namespace WorkerService.Image.Receiver
                     DIModule.RegisterDependency(services);
                     services.AddDbContext<CorrectItDbContext>(
                             options =>
-                                options.UseSqlServer(
-                                    hostContext.Configuration.GetConnectionString("CorrectIt"),
-                                    b => b.MigrationsAssembly("Infrastructure.Data.SqlServer")));
+                                options.UseMySql(
+                                    hostContext.Configuration.GetConnectionString("CorrectItWeb"),
+                                    b => b.MigrationsAssembly("Infrastructure.Data.Sql")));
                 });
     }
 }

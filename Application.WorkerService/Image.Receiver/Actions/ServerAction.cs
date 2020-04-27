@@ -1,49 +1,28 @@
-﻿using Common.Core.DependencyInjection;
-using System;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.WorkerService.Image.Receiver.Contracts;
+using Common.Core.DependencyInjection;
+using Common.Core.TcpServer;
 
 namespace Application.WorkerService.Image.Receiver.Actions
 {
     [ServiceLocate(typeof(IServerAction))]
     public class ServerAction : IServerAction
     {
-        private const int BufferSize = 512;
-        private byte[] DataReceived;
-        private TcpListener _tcpListener;
+        private int ListenPort = 1215;
+        private AsyncTCPServer _tcpListener;
 
-        public ServerAction()
+        public ServerAction(IImageReceivedHandler imageReceivedHandler)
         {
-            DataReceived = new byte[BufferSize];
+            _tcpListener = new AsyncTCPServer(ListenPort);
+            _tcpListener.SetHandleReceivedData(imageReceivedHandler);
+
         }
 
-        public void StratListening(int port)
+        public void StratListen()
         {
-            _tcpListener = TcpListener.Create(port);
-
-            Console.WriteLine(string.Format("Start to Listening at Port: {0}", port));
-
             _tcpListener.Start();
-
-            while (true) 
-            {
-                if (_tcpListener.Pending())
-                {
-                    Task.Run(async () =>
-                    {
-                        var socketAsync = await _tcpListener.AcceptSocketAsync();
-                        var numReceived = socketAsync.Receive(DataReceived);
-                        Console.WriteLine(Encoding.UTF8.GetString(DataReceived));
-                        socketAsync.Close();
-                    });
-                }
-
-                Task.Delay(1000);
-            }
         }
 
-        public void Stop()
+        public void StopListen()
         {
             _tcpListener.Stop();
         }

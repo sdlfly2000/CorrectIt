@@ -8,7 +8,7 @@ namespace Common.Core.DependencyInjection
     {
         public static void RegisterDependency(IServiceCollection services)
         {
-            RegisterDomain(services, "Infrastructure.Data.SqlServer");
+            RegisterDomain(services, "Infrastructure.Data.Sql");
             RegisterDomain(services, "Domain.Services");
             RegisterDomain(services, "Application.Services");
             RegisterDomain(services, "Application.WorkerService");

@@ -1,8 +1,8 @@
-﻿using Infrastructure.Data.SqlServer.Answers;
-using Infrastructure.Data.SqlServer.Questions;
+﻿using Infrastructure.Data.Sql.Answers;
+using Infrastructure.Data.Sql.Questions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data.SqlServer
+namespace Infrastructure.Data.Sql
 {
     public interface ICorrectItDbContext
     {

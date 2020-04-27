@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using System.IO;
+using System.Reflection;
 
 namespace Presentation.Mvc
 {
@@ -11,8 +14,17 @@ namespace Presentation.Mvc
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var config = new ConfigurationBuilder()
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                        .Build();
+
+            var builder = WebHost.CreateDefaultBuilder(args);
+            builder.UseContentRoot(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            builder.UseConfiguration(config);
+            builder.UseStartup<Startup>();
+            return builder;
+        }  
     }
 }

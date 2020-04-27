@@ -2,7 +2,7 @@
 using Domain.Exercises.Aspects;
 using Domain.Service.Exercises.Gateways.Loaders;
 using Domain.Service.Exercises.Gateways.Loaders.Mappers;
-using Infrastructure.Data.SqlServer;
+using Infrastructure.Data.Sql;
 using System.Collections.Generic;
 using System.Linq;
 

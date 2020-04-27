@@ -3,7 +3,7 @@
 using System;
 using System.Net.Sockets;
 
-namespace Common.Core.TcpServer
+namespace Common.Core.TcpServer.AsyncTCPServerContracts
 {
     public sealed class TCPClientState
     {
@@ -32,8 +32,8 @@ namespace Common.Core.TcpServer
             if (buffer == null)
                 throw new ArgumentNullException("buffer");
 
-            this.TcpClient = tcpClient;
-            this.Buffer = buffer;
+            TcpClient = tcpClient;
+            Buffer = buffer;
         }
         /// <summary>
         /// 关闭

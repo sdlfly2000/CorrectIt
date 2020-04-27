@@ -1,9 +1,9 @@
 ﻿using Common.Core.DependencyInjection;
-using Infrastructure.Data.SqlServer.Answers;
-using Infrastructure.Data.SqlServer.Questions;
+using Infrastructure.Data.Sql.Answers;
+using Infrastructure.Data.Sql.Questions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data.SqlServer
+namespace Infrastructure.Data.Sql
 {
     [ServiceLocate(typeof(ICorrectItDbContext))]
     public class CorrectItDbContext : DbContext, ICorrectItDbContext
@@ -12,8 +12,8 @@ namespace Infrastructure.Data.SqlServer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new QuestionEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new AnswerEntityConfiguration());
+            //modelBuilder.ApplyConfiguration(new QuestionEntityConfiguration());
+            //modelBuilder.ApplyConfiguration(new AnswerEntityConfiguration());
         }
 
         public DbSet<QuestionEntity> Questions { get; set; }

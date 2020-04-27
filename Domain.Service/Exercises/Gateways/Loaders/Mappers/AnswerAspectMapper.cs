@@ -1,6 +1,6 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.Exercises.Aspects;
-using Infrastructure.Data.SqlServer.Answers;
+using Infrastructure.Data.Sql.Answers;
 
 namespace Domain.Service.Exercises.Gateways.Loaders.Mappers
 {

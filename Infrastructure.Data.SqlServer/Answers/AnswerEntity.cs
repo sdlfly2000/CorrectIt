@@ -1,8 +1,8 @@
-﻿using Infrastructure.Data.SqlServer.Questions;
+﻿using Infrastructure.Data.Sql.Questions;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Data.SqlServer.Answers
+namespace Infrastructure.Data.Sql.Answers
 {
     public class AnswerEntity
     {

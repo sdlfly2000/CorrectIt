@@ -1,5 +1,5 @@
 ﻿using Domain.Exercises.Aspects;
-using Infrastructure.Data.SqlServer.Questions;
+using Infrastructure.Data.Sql.Questions;
 
 namespace Domain.Service.Exercises.Gateways.Loaders.Mappers
 {

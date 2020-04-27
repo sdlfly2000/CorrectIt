@@ -13,13 +13,14 @@ namespace Application.WorkerService.Image.Receiver
             _serverAction = serverAction;
         }
 
-        public void Start(int port)
+        public void Start()
         {
-            _serverAction.StratListening(port);
+            _serverAction.StratListen();
         }
 
         public void Stop()
         {
+            _serverAction.StopListen();
         }
     }
 }

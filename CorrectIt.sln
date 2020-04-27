@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Common", "5-Common", "{76
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infrastructure", "4-Infrastructure", "{743B4C0F-4607-49DA-8135-FA8D1C1286AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.SqlServer", "Infrastructure.Data.SqlServer\Infrastructure.Data.SqlServer.csproj", "{8E9A563A-C516-4665-9045-2D69AA9BF05B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Sql", "Infrastructure.Data.SqlServer\Infrastructure.Data.Sql.csproj", "{8E9A563A-C516-4665-9045-2D69AA9BF05B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core.DependencyInjection", "Common.Core.DependencyInjection\Common.Core.DependencyInjection.csproj", "{D800FBFA-7294-4F17-9032-0393CED71AE0}"
 EndProject
@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.WorkerService", "Application.WorkerService\Application.WorkerService.csproj", "{8FD169ED-BBE4-42F7-9335-72EF51E37EBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Core.TcpServer", "Common.Core.TcpServer\Common.Core.TcpServer.csproj", "{B084C4CC-C91B-4584-8536-E5E9B787729A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core.TcpServer", "Common.Core.TcpServer\Common.Core.TcpServer.csproj", "{B084C4CC-C91B-4584-8536-E5E9B787729A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

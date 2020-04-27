@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Common.Core.TcpServer
+namespace Common.Core.TcpServer.AsyncTCPServerContracts
 {
     public sealed class AsyncEventArgs : EventArgs
     {
@@ -23,18 +23,18 @@ namespace Common.Core.TcpServer
 
         public AsyncEventArgs(string msg)
         {
-            this._msg = msg;
+            _msg = msg;
             IsHandled = false;
         }
         public AsyncEventArgs(TCPClientState state)
         {
-            this._state = state;
+            _state = state;
             IsHandled = false;
         }
         public AsyncEventArgs(string msg, TCPClientState state)
         {
-            this._msg = msg;
-            this._state = state;
+            _msg = msg;
+            _state = state;
             IsHandled = false;
         }
     }

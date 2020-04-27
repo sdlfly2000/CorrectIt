@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Data.SqlServer.Answers
+namespace Infrastructure.Data.Sql.Answers
 {
     public class AnswerEntityConfiguration : IEntityTypeConfiguration<AnswerEntity>
     {

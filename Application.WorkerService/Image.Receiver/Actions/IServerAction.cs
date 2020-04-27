@@ -2,7 +2,7 @@
 {
     public interface IServerAction
     {
-        void Stop();
-        void StratListening(int port);
+        void StopListen();
+        void StratListen();
     }
 }
