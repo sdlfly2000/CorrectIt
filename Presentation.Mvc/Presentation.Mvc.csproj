@@ -39,7 +39,7 @@
     <ProjectReference Include="..\Application.WorkerService\Application.WorkerService.csproj" />
     <ProjectReference Include="..\Common.Core.DependencyInjection\Common.Core.DependencyInjection.csproj" />
     <ProjectReference Include="..\Domain.Service\Domain.Services.csproj" />
-    <ProjectReference Include="..\Infrastructure.Data.SqlServer\Infrastructure.Data.Sql.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data.Sql\Infrastructure.Data.Sql.csproj" />
   </ItemGroup>
 
   <ItemGroup>
