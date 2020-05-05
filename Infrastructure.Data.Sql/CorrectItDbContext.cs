@@ -1,5 +1,6 @@
 ﻿using Common.Core.DependencyInjection;
 using Infrastructure.Data.Sql.Answers;
+using Infrastructure.Data.Sql.Images;
 using Infrastructure.Data.Sql.Questions;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,5 +19,6 @@ namespace Infrastructure.Data.Sql
 
         public DbSet<QuestionEntity> Questions { get; set; }
         public DbSet<AnswerEntity> Answers { get; set; }
+        public DbSet<ImageEntity> Images { get; set; }
     }
 }

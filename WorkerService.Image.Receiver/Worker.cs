@@ -21,11 +21,6 @@ namespace WorkerService.Image.Receiver
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            //while (!stoppingToken.IsCancellationRequested)
-            //{
-            //    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            //    await Task.Delay(2000, stoppingToken);
-            //}
             _imageReceiverServer.Start();
         }
     }

@@ -97,7 +97,7 @@ namespace Common.Core.TcpServer
             _clients = new List<Object>();
 
             _listener = new TcpListener(Address, Port);
-            _listener.AllowNatTraversal(true);
+            //_listener.AllowNatTraversal(true);
         }
 
         #endregion

@@ -16,6 +16,7 @@ namespace Infrastructure.Data.Sql.Questions
         public DateTime QuestionCreatedOn { get; set; }
         public string QuestionCreatedBy { get; set; }
         public string QuestionComments { get; set; }
+        public string QuestionStatus { get; set; }
 
         public List<AnswerEntity> Answers { get; set; }
     }

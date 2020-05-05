@@ -14,7 +14,6 @@ namespace Application.WorkerService.Image.Receiver.Actions
         {
             _tcpListener = new AsyncTCPServer(ListenPort);
             _tcpListener.SetHandleReceivedData(imageReceivedHandler);
-
         }
 
         public void StratListen()
