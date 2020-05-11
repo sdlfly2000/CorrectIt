@@ -1,13 +1,22 @@
 ﻿using Common.Core.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Domain.QuestionImages;
+using Domain.Services.QuestionImages.Gateways.Criteria;
+using Domain.Services.QuestionImages.Gateways.Loaders;
 
 namespace Domain.Services.QuestionImages.Gateways
 {
-    [ServiceLocate(typeof())]
-    public class QuestionImageGateway
+    [ServiceLocate(typeof(IQuestionImageGateway))]
+    public class QuestionImageGateway : IQuestionImageGateway
     {
+        private readonly IQuestionImageAspectLoader _questionImageAspectLoader;
+        public QuestionImageGateway(IQuestionImageAspectLoader questionImageAspectLoader)
+        {
+            _questionImageAspectLoader = questionImageAspectLoader;
+        }
 
+        public QuestionImage Load(GetByQuestionCodeCriterion criterion)
+        {
+            return _questionImageAspectLoader.Load(criterion);
+        }
     }
 }
