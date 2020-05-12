@@ -16,7 +16,7 @@ namespace Domain.Services.QuestionImages.Gateways
 
         public QuestionImage Load(GetByQuestionCodeCriterion criterion)
         {
-            return _questionImageAspectLoader.Load(criterion);
+            return new QuestionImage(_questionImageAspectLoader.Load(criterion));
         }
     }
 }
