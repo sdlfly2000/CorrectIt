@@ -12,12 +12,12 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         private readonly List<byte> _data;
 
         private int _dataSize;
-        private int _dataReceivedSize;        
+        private int _dataReceivedSize;
+        private bool isWaitForData = false;
         #endregion
 
         public ImageReceivedHandler()
         {
-            _dataSize = 60;
             _data = new List<byte>();
         }
 
@@ -34,5 +34,11 @@ namespace Application.WorkerService.Image.Receiver.Contracts
                 _data.Clear();
             }
         }
+
+        private int ParseDataBlockSize(byte[] data)
+        {
+
+        }
+
     }
 }
