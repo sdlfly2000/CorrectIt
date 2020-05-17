@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Common.Core.Data.Sql
 {
@@ -8,5 +6,13 @@ namespace Common.Core.Data.Sql
         where TEntity: class
     {
         IEnumerable<TEntity> LoadAll();
+
+        void Update(TEntity entity);
+
+        void Create(TEntity entity);
+
+        void Persist(TEntity entity);
+
+        void Commit();
     }
 }

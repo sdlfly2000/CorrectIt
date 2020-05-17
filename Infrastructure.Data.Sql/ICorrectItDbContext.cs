@@ -10,5 +10,7 @@ namespace Infrastructure.Data.Sql
         DbSet<AnswerEntity> Answers { get; set; }
         DbSet<QuestionEntity> Questions { get; set; }
         DbSet<ImageEntity> Images { get; set; }
+
+        void Commit();
     }
 }

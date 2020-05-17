@@ -15,6 +15,26 @@ namespace Infrastructure.Data.Sql.Answers
             _context = context;
         }
 
+        public void Commit()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Create(AnswerEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Persist(AnswerEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(AnswerEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
         IEnumerable<AnswerEntity> IRepository<AnswerEntity>.LoadAll()
         {
             return _context.Answers.ToList();

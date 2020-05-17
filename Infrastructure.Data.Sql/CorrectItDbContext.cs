@@ -17,6 +17,11 @@ namespace Infrastructure.Data.Sql
             //modelBuilder.ApplyConfiguration(new AnswerEntityConfiguration());
         }
 
+        public void Commit()
+        {
+            SaveChanges();
+        }
+
         public DbSet<QuestionEntity> Questions { get; set; }
         public DbSet<AnswerEntity> Answers { get; set; }
         public DbSet<ImageEntity> Images { get; set; }
