@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Exercises\Gateways\Persistors\" />
     <Folder Include="Exercises\Gateways\Persistors\Synchronizers\" />
-    <Folder Include="QuestionImages\Gateways\Persistors\" />
   </ItemGroup>
 
   <ItemGroup>

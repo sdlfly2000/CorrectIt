@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.WorkerService",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core.TcpServer", "Common.Core.TcpServer\Common.Core.TcpServer.csproj", "{B084C4CC-C91B-4584-8536-E5E9B787729A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Core.Data.Sql", "Common.Core.Data.Sql\Common.Core.Data.Sql.csproj", "{2D09D350-2E59-4759-BBC3-FD9FE578AA18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{B084C4CC-C91B-4584-8536-E5E9B787729A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B084C4CC-C91B-4584-8536-E5E9B787729A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B084C4CC-C91B-4584-8536-E5E9B787729A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D09D350-2E59-4759-BBC3-FD9FE578AA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D09D350-2E59-4759-BBC3-FD9FE578AA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D09D350-2E59-4759-BBC3-FD9FE578AA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D09D350-2E59-4759-BBC3-FD9FE578AA18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{82043709-5E74-45C1-9D2D-22FCC49948B7} = {AAE5A0EF-E72A-4DFC-BBF4-F234C8902E60}
 		{8FD169ED-BBE4-42F7-9335-72EF51E37EBB} = {AAE5A0EF-E72A-4DFC-BBF4-F234C8902E60}
 		{B084C4CC-C91B-4584-8536-E5E9B787729A} = {76A6533C-20DF-4D17-BC32-1018BB873FC7}
+		{2D09D350-2E59-4759-BBC3-FD9FE578AA18} = {76A6533C-20DF-4D17-BC32-1018BB873FC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AA2BF4D-F42E-424A-9FF7-DB6A08AD6D0E}

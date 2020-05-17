@@ -2,7 +2,7 @@
 using Domain.Exercises.Aspects;
 using Domain.Service.Exercises.Gateways.Loaders;
 using Domain.Service.Exercises.Gateways.Loaders.Mappers;
-using Infrastructure.Data.Sql;
+using Infrastructure.Data.Sql.Questions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,25 +11,25 @@ namespace Domain.Service.Exercises.Loaders
     [ServiceLocate(typeof(IQuestionAspectLoader))]
     public class QuestionAspectLoader : IQuestionAspectLoader
     {
-        private ICorrectItDbContext _context;
+        private IQuestionRepository _repository;
         private IQuestionAspectMapper _mapper;
 
         public QuestionAspectLoader(
             IQuestionAspectMapper mappper,
-            ICorrectItDbContext context)
+            IQuestionRepository repository)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mappper;
         }
 
         public IQuestionAspect Load(string code)
         {
-            return _mapper.Map(_context.Questions.FirstOrDefault(q => q.QuestionId.ToString().Equals(code)));
+            return _mapper.Map(_repository.LoadAll().FirstOrDefault(q => q.QuestionId.ToString().Equals(code)));
         }
 
         public List<IQuestionAspect> LoadAll()
         {
-            var entities = _context.Questions.ToList();
+            var entities = _repository.LoadAll();
 
             return entities.Select(e => _mapper.Map(e)).ToList<IQuestionAspect>();
         }
