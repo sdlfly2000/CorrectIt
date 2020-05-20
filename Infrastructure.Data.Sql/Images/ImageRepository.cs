@@ -1,9 +1,11 @@
 ﻿using Common.Core.Data.Sql;
+using Common.Core.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Infrastructure.Data.Sql.Images
 {
+    [ServiceLocate(typeof(IImageRepository))]
     public class ImageRepository : IImageRepository
     {
         private readonly ICorrectItDbContext _context;

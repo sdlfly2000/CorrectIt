@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Application.WorkerService.Image.Receiver.Contracts
 {
@@ -9,11 +10,13 @@ namespace Application.WorkerService.Image.Receiver.Contracts
     public class ImageReceivedHandler : IImageReceivedHandler
     {
         #region Private Variables
-        private readonly List<byte> _data;
 
-        private int _dataSize;
-        private int _dataReceivedSize;
-        private bool isWaitForData = false;
+        private List<byte> _data;
+
+        private int _dataSize = 0;
+        private int _dataReceivedSize = 0;
+        private bool isWaitForContinueData = false;
+
         #endregion
 
         public ImageReceivedHandler()
@@ -23,22 +26,33 @@ namespace Application.WorkerService.Image.Receiver.Contracts
 
         public void Process(byte[] data)
         {
+            if (!isWaitForContinueData)
+            {
+                _dataSize = GetDataSize(data);
+                isWaitForContinueData = true;
+            }
+
             _dataReceivedSize += data.Length;
             _data.AddRange(data);
 
-            if (_dataReceivedSize >= _dataSize)
+            if (_dataSize != 0 && _dataReceivedSize >= _dataSize)
             {
                 Console.WriteLine(_data.Count);
-                Console.WriteLine(Encoding.ASCII.GetString(_data.ToArray()));
+                Console.WriteLine(Encoding.ASCII.GetString(_data.ToArray().AsSpan<byte>(4)));
+
                 _dataReceivedSize = 0;
                 _data.Clear();
+                isWaitForContinueData = false;
             }
         }
 
-        private int ParseDataBlockSize(byte[] data)
-        {
+        #region Private Methods
 
+        private int GetDataSize(byte[] data)
+        {
+            return BitConverter.ToInt32(data.AsSpan<byte>().Slice(0, 4));
         }
 
+        #endregion
     }
 }
