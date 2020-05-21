@@ -16,6 +16,8 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         private int _dataReceivedSize = 0;
         private bool isWaitForContinueData = false;
 
+        private IReceivedDataParser _parser;
+
         #endregion
 
         public ImageReceivedHandler()
@@ -38,6 +40,8 @@ namespace Application.WorkerService.Image.Receiver.Contracts
             {
                 Console.WriteLine(_data.Count);
                 Console.WriteLine(Encoding.ASCII.GetString(_data.ToArray().AsSpan<byte>(4)));
+
+                _parser = new ReceivedDataParser(_data.ToArray());
 
                 _dataReceivedSize = 0;
                 _data.Clear();
