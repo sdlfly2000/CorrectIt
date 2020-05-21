@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Application.WorkerService.Image.Receiver.Contracts
 {
-
     /// <summary>
     /// The structure of data received from mobile is,
     /// [

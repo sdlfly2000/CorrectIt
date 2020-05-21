@@ -1,4 +1,5 @@
 ﻿using Common.Core.DependencyInjection;
+using Domain.Services.QuestionImages.Gateways;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace Application.WorkerService.Image.Receiver.Contracts
     {
         #region Private Variables
 
+        private readonly IQuestionImageGateway _imageGateway;
+
         private List<byte> _data;
 
         private int _dataSize = 0;
@@ -20,8 +23,10 @@ namespace Application.WorkerService.Image.Receiver.Contracts
 
         #endregion
 
-        public ImageReceivedHandler()
+        public ImageReceivedHandler(IQuestionImageGateway imageGateway)
         {
+            _imageGateway = imageGateway;
+
             _data = new List<byte>();
         }
 
