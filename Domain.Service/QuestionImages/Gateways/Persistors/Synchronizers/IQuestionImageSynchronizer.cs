@@ -1,10 +1,9 @@
-﻿using Domain.Services.QuestionImages.Gateways.Persistors.Requests;
-using Domain.Services.QuestionImages.Gateways.Persistors.Responses;
+﻿using Domain.Services.QuestionImages.Gateways.Persistors.Contracts;
 
 namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
 {
     public interface IQuestionImageSynchronizer
     {
-        SaveQuestionImageResponse Save(SaveQuestionImageRequest request);
+        QuestionImageResponse Create(CreateQuestionImageRequest request);
     }
 }

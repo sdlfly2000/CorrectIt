@@ -1,7 +1,7 @@
 ﻿using Common.Core.DependencyInjection;
-using Domain.Services.QuestionImages.Gateways.Persistors.Requests;
-using Domain.Services.QuestionImages.Gateways.Persistors.Responses;
+using Domain.Services.QuestionImages.Gateways.Persistors.Contracts;
 using Infrastructure.Data.Sql.Images;
+using System;
 
 namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
 {
@@ -15,15 +15,22 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
             _repository = repository;
         }
 
-        public SaveQuestionImageResponse Save(SaveQuestionImageRequest request)
+        public QuestionImageResponse Create(CreateQuestionImageRequest request)
         {
             var entity = new ImageEntity
             {
-
+                ImageCategory = request.ImageCategory,
+                ImageComments = request.ImageComments,
+                ImageCreatedBy = request.ImageCreatedBy,
+                ImageCreatedOn = DateTime.Now,
+                ImageFileName = request.ImageFileName,
+                ImageStatus = "Valid",
+                ImageId = new Guid(),
+                QuestionId = request.QuestionId
             };
 
-            _repository.Create(entity);
-            return new SaveQuestionImageResponse();
+            _repository.Persist(entity);
+            return new QuestionImageResponse();
         }
     }
 }

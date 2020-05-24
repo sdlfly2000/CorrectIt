@@ -26,14 +26,14 @@ namespace Application.WorkerService.Image.Receiver.Contracts
     ///     [
     ///         [2 bytes]   offset 16+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize:17+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize -> Int16 : AnswerId (AnswerIdSize)
     ///         ...         offset 18+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize:18+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> String: Answer Id
-    ///     ]  
-    ///     [
-    ///         [2 bytes]   offset 19+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:20+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> Int16 : CreatedBy (CreatedBySize)
-    ///         ...         offset 21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> String: ImageCreatedBy
     ///     ]
     ///     [
-    ///         [4 bytes]   offset 22+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:25+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> Int32: Image Data (ImageDataSize)
-    ///         ...         26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize+ImageDataSize -> byte[]: ImageData
+    ///         [2 bytes]   offset 19+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:20+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> Int16 : CreatedBy (CreatedBySize)
+    ///         ...         offset 21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> String: CreatedBy
+    ///     ]
+    ///     [
+    ///         [4 bytes]   offset 22+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:24+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> Int32: Image Data (ImageDataSize)
+    ///         ...         offset 26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize -> byte[]: Image Data
     ///     ] 
     /// ]
     /// </summary>
@@ -47,7 +47,7 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         }
 
         public int ImageFileNameSize => BitConverter.ToInt16(_data.AsSpan().Slice(4,2));
-        public string ImaageFileName => BitConverter.ToString(_data, 6, ImageFileNameSize);
+        public string ImageFileName => BitConverter.ToString(_data, 6, ImageFileNameSize);
 
         public int ImageCategorySize => BitConverter.ToInt16(_data.AsSpan().Slice(7 + ImageFileNameSize, 2));
         public string ImageCategory => BitConverter.ToString(_data, 9 + ImageFileNameSize, ImageCategorySize);
