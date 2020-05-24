@@ -7,6 +7,6 @@ namespace Domain.Services.QuestionImages.Gateways
     public interface IQuestionImageGateway
     {
         QuestionImage Load(GetByQuestionCodeCriterion criterion);
-        QuestionImageResponse Save(CreateQuestionImageRequest reqeust);
+        QuestionImageResponse Create(CreateQuestionImageRequest reqeust);
     }
 }

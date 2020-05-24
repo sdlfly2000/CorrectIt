@@ -28,8 +28,12 @@ namespace Application.WorkerService.Image.Receiver.Contracts
     ///         ...         offset 18+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize:18+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> String: Answer Id
     ///     ]
     ///     [
-    ///         [4 bytes]   offset 19+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:22+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> Int32: Image Data (ImageDataSize)
-    ///         ...         23+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:23+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize
+    ///         [2 bytes]   offset 19+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:20+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> Int16 : CreatedBy (CreatedBySize)
+    ///         ...         offset 21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> String: CreatedBy
+    ///     ]
+    ///     [
+    ///         [4 bytes]   offset 22+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:24+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> Int32: Image Data (ImageDataSize)
+    ///         ...         offset 26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize -> byte[]: Image Data
     ///     ] 
     /// ]
     /// </summary>
@@ -43,7 +47,7 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         }
 
         public int ImageFileNameSize => BitConverter.ToInt16(_data.AsSpan().Slice(4,2));
-        public string ImaageFileName => BitConverter.ToString(_data, 6, ImageFileNameSize);
+        public string ImageFileName => BitConverter.ToString(_data, 6, ImageFileNameSize);
 
         public int ImageCategorySize => BitConverter.ToInt16(_data.AsSpan().Slice(7 + ImageFileNameSize, 2));
         public string ImageCategory => BitConverter.ToString(_data, 9 + ImageFileNameSize, ImageCategorySize);
@@ -57,7 +61,10 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         public int AnswerIdSize => BitConverter.ToInt16(_data.AsSpan().Slice(16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize, 2));
         public string AnswerId => BitConverter.ToString(_data, 18 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize, AnswerIdSize);
 
-        public int ImageDataSize => BitConverter.ToInt32(_data.AsSpan().Slice(19 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, 4));
-        public byte[] ImageData => _data.AsSpan().Slice(23 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize).ToArray();
+        public int ImageCreatedBySize => BitConverter.ToInt16(_data.AsSpan().Slice(19 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, 2));
+        public string ImageCreatedBy => BitConverter.ToString(_data, 21 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, ImageCreatedBySize);
+
+        public int ImageDataSize => BitConverter.ToInt32(_data.AsSpan().Slice(22 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, 4));
+        public byte[] ImageData => _data.AsSpan().Slice(26 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize).ToArray();
     }
 }

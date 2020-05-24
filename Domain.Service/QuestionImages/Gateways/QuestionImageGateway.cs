@@ -26,9 +26,9 @@ namespace Domain.Services.QuestionImages.Gateways
             return new QuestionImage(_questionImageAspectLoader.Load(criterion));
         }
 
-        public QuestionImageResponse Save(CreateQuestionImageRequest reqeust)
+        public QuestionImageResponse Create(CreateQuestionImageRequest reqeust)
         {
-            return _imageSynchronizer.Save(reqeust);
+            return _imageSynchronizer.Create(reqeust);
         }
     }
 }

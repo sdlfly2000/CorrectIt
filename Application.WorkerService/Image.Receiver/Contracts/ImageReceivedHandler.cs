@@ -1,5 +1,6 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.Services.QuestionImages.Gateways;
+using Domain.Services.QuestionImages.Gateways.Persistors.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,8 +19,6 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         private int _dataSize = 0;
         private int _dataReceivedSize = 0;
         private bool isWaitForContinueData = false;
-
-        private IReceivedDataParser _parser;
 
         #endregion
 
@@ -46,8 +45,15 @@ namespace Application.WorkerService.Image.Receiver.Contracts
                 Console.WriteLine(_data.Count);
                 Console.WriteLine(Encoding.ASCII.GetString(_data.ToArray().AsSpan<byte>(4)));
 
-                _parser = new ReceivedDataParser(_data.ToArray());
-                _imageGateway.
+                var parser = new ReceivedDataParser(_data.ToArray());
+
+                _imageGateway.Create(new CreateQuestionImageRequest { 
+                    ImageCategory = parser.ImageCategory,
+                    ImageComments = parser.ImageComments,
+                    ImageFileName = parser.ImageFileName,
+                    QuestionId = new Guid(parser.QuestionId),
+                    ImageCreatedBy = parser.ImageCreatedBy 
+                });
 
                 _dataReceivedSize = 0;
                 _data.Clear();

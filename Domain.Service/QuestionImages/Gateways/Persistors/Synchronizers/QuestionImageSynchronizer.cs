@@ -29,8 +29,7 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
                 QuestionId = request.QuestionId
             };
 
-            _repository.Create(entity);
-            _repository.Commit();
+            _repository.Persist(entity);
             return new QuestionImageResponse();
         }
     }
