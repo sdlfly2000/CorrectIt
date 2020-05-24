@@ -47,6 +47,7 @@ namespace Application.WorkerService.Image.Receiver.Contracts
                 Console.WriteLine(Encoding.ASCII.GetString(_data.ToArray().AsSpan<byte>(4)));
 
                 _parser = new ReceivedDataParser(_data.ToArray());
+                _imageGateway.
 
                 _dataReceivedSize = 0;
                 _data.Clear();

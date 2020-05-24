@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Domain.Services.QuestionImages.Gateways.Persistors.Requests
+namespace Domain.Services.QuestionImages.Gateways.Persistors.Contracts
 {
-    public class SaveQuestionImageRequest
+    public class CreateQuestionImageRequest
     {
-        
+
         public string ImageCategory { get; set; }
         public string ImageFileName { get; set; }
         public string ImageCreatedBy { get; set; }
