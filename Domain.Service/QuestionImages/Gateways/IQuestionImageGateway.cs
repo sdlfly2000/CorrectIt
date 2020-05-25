@@ -3,8 +3,12 @@ using GetByQuestionCodeCriterion = Domain.Services.QuestionImages.Gateways.Crite
 
 namespace Domain.Services.QuestionImages.Gateways
 {
+    using Domain.Services.QuestionImages.Gateways.Persistors.Contracts;
+
     public interface IQuestionImageGateway
     {
         QuestionImage Load(GetByQuestionCodeCriterion criterion);
+
+        QuestionImageResponse Create(CreateQuestionImageRequest request);
     }
 }

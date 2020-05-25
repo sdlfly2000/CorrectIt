@@ -17,15 +17,16 @@ namespace WorkerService.Image.Receiver
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseSystemd()
-                .ConfigureServices((hostContext, services) =>
-                {                 
-                    DIModule.RegisterDependency(services);
-                    services.AddDbContext<CorrectItDbContext>(
-                            options =>
-                                options.UseMySql(
+                .ConfigureServices(
+                    (hostContext, services) =>
+                        {
+                            DIModule.RegisterDependency(services);
+                            services.AddDbContext<CorrectItDbContext>(
+                                options => options.UseMySql(
                                     hostContext.Configuration.GetConnectionString("CorrectItWeb"),
-                                    b => b.MigrationsAssembly("Infrastructure.Data.Sql")));
-                    services.AddHostedService<Worker>();
-                });
+                                    b => b.MigrationsAssembly("Infrastructure.Data.Sql")),
+                                optionsLifetime: ServiceLifetime.Singleton);
+                            services.AddHostedService<Worker>();
+                        });
     }
 }
