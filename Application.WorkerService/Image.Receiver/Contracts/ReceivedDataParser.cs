@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Text;
 
 namespace Application.WorkerService.Image.Receiver.Contracts
 {
@@ -47,24 +47,24 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         }
 
         public int ImageFileNameSize => BitConverter.ToInt16(_data.AsSpan().Slice(4,2));
-        public string ImageFileName => BitConverter.ToString(_data, 6, ImageFileNameSize);
+        public string ImageFileName => Encoding.ASCII.GetString(_data, 6, ImageFileNameSize);
 
-        public int ImageCategorySize => BitConverter.ToInt16(_data.AsSpan().Slice(7 + ImageFileNameSize, 2));
-        public string ImageCategory => BitConverter.ToString(_data, 9 + ImageFileNameSize, ImageCategorySize);
+        public int ImageCategorySize => BitConverter.ToInt16(_data.AsSpan().Slice(6 + ImageFileNameSize, 2));
+        public string ImageCategory => Encoding.ASCII.GetString(_data, 8 + ImageFileNameSize, ImageCategorySize);
 
-        public int ImageCommentsSize => BitConverter.ToInt16(_data.AsSpan().Slice(10 + ImageFileNameSize + ImageCategorySize, 2));
-        public string ImageComments => BitConverter.ToString(_data, 12 + ImageFileNameSize + ImageCategorySize, ImageCommentsSize);
+        public int ImageCommentsSize => BitConverter.ToInt16(_data.AsSpan().Slice(8 + ImageFileNameSize + ImageCategorySize, 2));
+        public string ImageComments => Encoding.ASCII.GetString(_data, 10 + ImageFileNameSize + ImageCategorySize, ImageCommentsSize);
 
-        public int QuestionIdSize => BitConverter.ToInt16(_data.AsSpan().Slice(13 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize, 2));
-        public string QuestionId => BitConverter.ToString(_data, 15 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize, QuestionIdSize);
+        public int QuestionIdSize => BitConverter.ToInt16(_data.AsSpan().Slice(10 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize, 2));
+        public string QuestionId => Encoding.ASCII.GetString(_data, 12 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize, QuestionIdSize);
 
-        public int AnswerIdSize => BitConverter.ToInt16(_data.AsSpan().Slice(16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize, 2));
-        public string AnswerId => BitConverter.ToString(_data, 18 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize, AnswerIdSize);
+        public int AnswerIdSize => BitConverter.ToInt16(_data.AsSpan().Slice(12 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize, 2));
+        public string AnswerId => Encoding.ASCII.GetString(_data, 14 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize, AnswerIdSize);
 
-        public int ImageCreatedBySize => BitConverter.ToInt16(_data.AsSpan().Slice(19 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, 2));
-        public string ImageCreatedBy => BitConverter.ToString(_data, 21 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, ImageCreatedBySize);
+        public int ImageCreatedBySize => BitConverter.ToInt16(_data.AsSpan().Slice(14 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, 2));
+        public string ImageCreatedBy => Encoding.ASCII.GetString(_data, 16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, ImageCreatedBySize);
 
-        public int ImageDataSize => BitConverter.ToInt32(_data.AsSpan().Slice(22 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, 4));
-        public byte[] ImageData => _data.AsSpan().Slice(26 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize).ToArray();
+        public int ImageDataSize => BitConverter.ToInt32(_data.AsSpan().Slice(16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, 4));
+        public byte[] ImageData => _data.AsSpan().Slice(20 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize).ToArray();
     }
 }
