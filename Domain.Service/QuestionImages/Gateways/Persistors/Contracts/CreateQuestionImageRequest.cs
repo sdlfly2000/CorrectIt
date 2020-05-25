@@ -9,6 +9,7 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Contracts
         public string ImageFileName { get; set; }
         public string ImageCreatedBy { get; set; }
         public string ImageComments { get; set; }
+        public byte[] ImageData { get; set; }
 
         public Guid QuestionId { get; set; }
     }

@@ -51,7 +51,8 @@ namespace Application.WorkerService.Image.Receiver.Contracts
                     ImageComments = parser.ImageComments,
                     ImageCreatedBy = parser.ImageCreatedBy,
                     ImageFileName = parser.ImageFileName,
-                    QuestionId = new Guid(parser.QuestionId)
+                    QuestionId = new Guid(parser.QuestionId),
+                    ImageData = parser.ImageData
                 });
 
                 _dataReceivedSize = 0;

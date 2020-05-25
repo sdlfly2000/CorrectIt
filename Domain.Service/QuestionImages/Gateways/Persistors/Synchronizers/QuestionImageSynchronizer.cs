@@ -1,5 +1,6 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.Services.QuestionImages.Gateways.Persistors.Contracts;
+using Infrastructure.Data.File.ImageFiles;
 using Infrastructure.Data.Sql.Images;
 using System;
 
@@ -9,10 +10,14 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
     public class QuestionImageSynchronizer : IQuestionImageSynchronizer
     {
         private readonly IImageRepository _repository;
+        private readonly IImageFilePersistor _imageFilePersistor;
 
-        public QuestionImageSynchronizer(IImageRepository repository)
+        public QuestionImageSynchronizer(
+            IImageRepository repository,
+            IImageFilePersistor imageFilePersistor)
         {
             _repository = repository;
+            _imageFilePersistor = imageFilePersistor;
         }
 
         public QuestionImageResponse Create(CreateQuestionImageRequest request)
@@ -30,6 +35,7 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
             };
 
             _repository.Persist(entity);
+            _imageFilePersistor.SaveToDisk(request.ImageData);
             return new QuestionImageResponse();
         }
     }

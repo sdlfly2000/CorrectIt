@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Common.Core.DependencyInjection\Common.Core.DependencyInjection.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure.Data.File\Infrastructure.Data.File.csproj" />
     <ProjectReference Include="..\Infrastructure.Data.Sql\Infrastructure.Data.Sql.csproj" />
   </ItemGroup>
 
