@@ -1,7 +1,9 @@
-﻿namespace Infrastructure.Data.File.ImageFiles
+﻿using System;
+
+namespace Infrastructure.Data.File.ImageFiles
 {
     public interface IImageFilePersistor
     {
-        void SaveToDisk(byte[] imageData);
+        Guid SaveToDisk(byte[] imageData, int imageWidth, int imageHeight);
     }
 }

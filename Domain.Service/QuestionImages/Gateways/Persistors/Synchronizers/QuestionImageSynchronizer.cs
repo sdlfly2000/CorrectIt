@@ -22,6 +22,8 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
 
         public QuestionImageResponse Create(CreateQuestionImageRequest request)
         {
+            var imageId = _imageFilePersistor.SaveToDisk(request.ImageData, request.ImageWidth, request.ImageHeight);
+
             var entity = new ImageEntity
             {
                 ImageCategory = request.ImageCategory,
@@ -30,12 +32,12 @@ namespace Domain.Services.QuestionImages.Gateways.Persistors.Synchronizers
                 ImageCreatedOn = DateTime.Now,
                 ImageFileName = request.ImageFileName,
                 ImageStatus = "Valid",
-                ImageId = new Guid(),
-                QuestionId = request.QuestionId
+                ImageId = imageId,
+                QuestionId = request.QuestionId,
             };
 
             _repository.Persist(entity);
-            _imageFilePersistor.SaveToDisk(request.ImageData);
+            
             return new QuestionImageResponse();
         }
     }
