@@ -30,11 +30,17 @@ namespace Application.WorkerService.Image.Receiver.Contracts
     ///     [
     ///         [2 bytes]   offset 19+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:20+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize -> Int16 : CreatedBy (CreatedBySize)
     ///         ...         offset 21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize:21+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> String: CreatedBy
-    ///     ]
+    ///     ] 
     ///     [
     ///         [4 bytes]   offset 22+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:24+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize -> Int32: Image Data (ImageDataSize)
     ///         ...         offset 26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+CreatedBySize:26+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize -> byte[]: Image Data
-    ///     ] 
+    ///     ]
+    ///     [
+    ///         [4 bytes]   offset 27+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize:30+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize -> Int32 : ImageWidth
+    ///     ]
+    ///     [
+    ///         [4 bytes]   offset 31+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize:34+FileNameSize+ImageCategorySize+ImageCommentsSize+QuestionIdSize+AnswerIdSize+ImageDataSize+CreatedBySize+ImageDataSize -> Int32 : ImageHeight
+    ///     ]
     /// ]
     /// </summary>
     public class ReceivedDataParser : IReceivedDataParser
@@ -65,6 +71,9 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         public string ImageCreatedBy => Encoding.ASCII.GetString(_data, 16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize, ImageCreatedBySize);
 
         public int ImageDataSize => BitConverter.ToInt32(_data.AsSpan().Slice(16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, 4));
-        public byte[] ImageData => _data.AsSpan().Slice(20 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize).ToArray();
+        public byte[] ImageData => _data.AsSpan().Slice(20 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, ImageDataSize).ToArray();
+
+        public int ImageWidth => BitConverter.ToInt32(_data.AsSpan().Slice(21 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize + ImageDataSize, 4));
+        public int ImageHeight => BitConverter.ToInt32(_data.AsSpan().Slice(25 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize + ImageDataSize, 4));
     }
 }
