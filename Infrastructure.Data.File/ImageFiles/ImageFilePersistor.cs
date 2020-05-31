@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Infrastructure.Data.File.ImageFiles
 {
@@ -13,11 +14,15 @@ namespace Infrastructure.Data.File.ImageFiles
         {
             var guidName = new Guid();
             var fileName = guidName + ".jpeg";
-            var imageDataMemoryStream = new MemoryStream(imageData);
-            var image = Image.FromStream(imageDataMemoryStream);
-            var bitmap = new Bitmap(image, imageWidth, imageHeight);
-            bitmap.Save(fileName, ImageFormat.Jpeg);
-                
+
+            var imgPtr = Marshal.AllocHGlobal(imageData.Length);            
+            Marshal.Copy(imageData, 0, imgPtr, imageData.Length);
+            var imgBitmap = new Bitmap(imageWidth, imageHeight, 1, PixelFormat.Format8bppIndexed, imgPtr);
+
+            //imgBitmap.Save(fileName, ImageFormat.Jpeg);
+
+            Marshal.FreeHGlobal(imgPtr);
+
             return guidName;
         }
     }

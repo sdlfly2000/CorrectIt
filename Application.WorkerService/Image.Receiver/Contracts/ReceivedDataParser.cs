@@ -73,7 +73,7 @@ namespace Application.WorkerService.Image.Receiver.Contracts
         public int ImageDataSize => BitConverter.ToInt32(_data.AsSpan().Slice(16 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, 4));
         public byte[] ImageData => _data.AsSpan().Slice(20 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize, ImageDataSize).ToArray();
 
-        public int ImageWidth => BitConverter.ToInt32(_data.AsSpan().Slice(21 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize + ImageDataSize, 4));
-        public int ImageHeight => BitConverter.ToInt32(_data.AsSpan().Slice(25 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize + ImageDataSize, 4));
+        public int ImageWidth => BitConverter.ToInt32(_data.AsSpan().Slice(20 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize + ImageDataSize, 4));
+        public int ImageHeight => BitConverter.ToInt32(_data.AsSpan().Slice(24 + ImageFileNameSize + ImageCategorySize + ImageCommentsSize + QuestionIdSize + AnswerIdSize + ImageCreatedBySize + ImageDataSize, 4));
     }
 }

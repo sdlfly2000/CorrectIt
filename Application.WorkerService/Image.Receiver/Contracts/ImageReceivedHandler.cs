@@ -52,7 +52,9 @@ namespace Application.WorkerService.Image.Receiver.Contracts
                     ImageCreatedBy = parser.ImageCreatedBy,
                     ImageFileName = parser.ImageFileName,
                     QuestionId = new Guid(parser.QuestionId),
-                    ImageData = parser.ImageData
+                    ImageData = parser.ImageData,
+                    ImageHeight = parser.ImageHeight,
+                    ImageWidth = parser.ImageWidth
                 });
 
                 _dataReceivedSize = 0;
