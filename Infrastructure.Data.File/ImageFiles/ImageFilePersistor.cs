@@ -1,8 +1,6 @@
 ﻿using Common.Core.DependencyInjection;
 using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
+using OpenCvSharp;
 using System.Runtime.InteropServices;
 
 namespace Infrastructure.Data.File.ImageFiles
@@ -12,18 +10,22 @@ namespace Infrastructure.Data.File.ImageFiles
     {
         public Guid SaveToDisk(byte[] imageData, int imageWidth, int imageHeight)
         {
-            var guidName = new Guid();
+            var guidName = Guid.NewGuid();
             var fileName = guidName + ".jpeg";
+            var imgPtr = Marshal.AllocHGlobal(imageWidth * imageHeight * 3);
+            try
+            {
+                Marshal.Copy(imageData, 0, imgPtr, imageWidth * imageHeight * 3);
+                var imageMat = new Mat(imageWidth, imageHeight, MatType.CV_8UC3, imgPtr);
 
-            var imgPtr = Marshal.AllocHGlobal(imageData.Length);            
-            Marshal.Copy(imageData, 0, imgPtr, imageData.Length);
-            var imgBitmap = new Bitmap(imageWidth, imageHeight, 1, PixelFormat.Format8bppIndexed, imgPtr);
+                imageMat.SaveImage(fileName);
 
-            //imgBitmap.Save(fileName, ImageFormat.Jpeg);
-
-            Marshal.FreeHGlobal(imgPtr);
-
-            return guidName;
+                return guidName;
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(imgPtr);
+            }
         }
     }
 }
