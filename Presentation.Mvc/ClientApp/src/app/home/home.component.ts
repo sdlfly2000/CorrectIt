@@ -1,16 +1,23 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { QuestionModel } from './Models/question.model'
+
+import { QuestionService } from '../Services/Question/question.service';
+import { QuestionModel } from '../Services/Question/Models/question.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  providers: [QuestionService]
 })
 export class HomeComponent {
   public questions: QuestionModel[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<QuestionModel[]>(baseUrl + 'api/Question/Get').subscribe(results => {
+  constructor(private questionService: QuestionService, @Inject('BASE_URL') baseUrl: string) {
+    this.getQuestions(baseUrl);
+  }
+
+  public getQuestions(url: string): void
+  {
+    this.questionService.getQuestions(url).subscribe(results => {
       this.questions = [];
       for (var model of results) {
         this.questions.push(this.Map(model));
