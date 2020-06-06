@@ -1,6 +1,7 @@
 ﻿using Common.Core.DependencyInjection;
 using System;
 using OpenCvSharp;
+using Microsoft.Extensions.Configuration;
 using System.Runtime.InteropServices;
 
 namespace Infrastructure.Data.File.ImageFiles
@@ -8,10 +9,19 @@ namespace Infrastructure.Data.File.ImageFiles
     [ServiceLocate(typeof(IImageFilePersistor))]
     public class ImageFilePersistor : IImageFilePersistor
     {
+        private readonly IConfiguration _configuration;
+        private string keyImageFileFolder = "FeatureFlags:ImageFileFolder";
+
+        public ImageFilePersistor(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public Guid SaveToDisk(byte[] imageData, int imageWidth, int imageHeight)
         {
             var guidName = Guid.NewGuid();
-            var fileName = guidName + ".jpeg";
+            var folder = GetFolderName();
+            var fileName = folder + guidName + ".jpeg";
             var imgPtr = Marshal.AllocHGlobal(imageWidth * imageHeight * 3);
             try
             {
@@ -27,5 +37,14 @@ namespace Infrastructure.Data.File.ImageFiles
                 Marshal.FreeHGlobal(imgPtr);
             }
         }
+
+        #region Private Methods
+
+        private string GetFolderName()
+        {
+            return _configuration.GetValue<string>(keyImageFileFolder);
+        }
+
+        #endregion
     }
 }
