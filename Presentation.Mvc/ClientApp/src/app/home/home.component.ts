@@ -11,13 +11,13 @@ import { QuestionModel } from '../Services/Question/Models/question.model';
 export class HomeComponent {
   public questions: QuestionModel[];
 
-  constructor(private questionService: QuestionService, @Inject('BASE_URL') baseUrl: string) {
-    this.getQuestions(baseUrl);
+  constructor(private questionService: QuestionService) {
+    this.getQuestions();
   }
 
-  public getQuestions(url: string): void
+  public getQuestions(): void
   {
-    this.questionService.getQuestions(url).subscribe(results => {
+    this.questionService.retrieveQuestions().subscribe(results => {
       this.questions = [];
       for (var model of results) {
         this.questions.push(this.Map(model));

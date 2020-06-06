@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { QuestionModel } from './Models/question.model';
 import { Observable } from 'rxjs';
@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class QuestionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
-  public getQuestions(baseUrl: string): Observable<QuestionModel[]> {
-    return this.http.get<QuestionModel[]>(baseUrl + 'api/Question/Get');    
+  public retrieveQuestions(): Observable<QuestionModel[]> {
+    return this.http.get<QuestionModel[]>(this.baseUrl + 'api/Question/Get');    
   }
 }
