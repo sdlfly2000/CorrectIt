@@ -1,14 +1,14 @@
 import { Component, Inject } from '@angular/core';
 
-import { QuestionService } from '../Services/Question/question.service';
-import { QuestionModel } from '../Services/Question/Models/question.model';
+import { QuestionService } from './question.service';
+import { QuestionModel } from './Models/question.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-mainPanel',
+  templateUrl: './questions.component.html',
   providers: [QuestionService]
 })
-export class HomeComponent {
+export class QuestionComponent {
   public questions: QuestionModel[];
 
   constructor(private questionService: QuestionService) {
