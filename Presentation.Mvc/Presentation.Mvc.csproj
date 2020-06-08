@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\navBar\navbar.component.ts" />
     <None Remove="ClientApp\src\app\titleBar\titlebar.component.ts" />
   </ItemGroup>
 
@@ -45,11 +46,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\mainPanel\Questions\Models\question.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mainPanel\Questions\question.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\navBar\navbar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\titleBar\titlebar.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\navBar\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
