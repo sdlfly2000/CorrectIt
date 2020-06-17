@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './mainPanel/Questions/questions.component';
-import { TitleBarComponent } from './titleBar/titlebar.component';
-import { NavBarComponent } from './navBar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -23,9 +21,7 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionComponent,
-    TitleBarComponent,
-    NavBarComponent
+    QuestionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
