@@ -1,6 +1,6 @@
 <p *ngIf="!questions"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="questions">
+<nz-table #questionTable [nzData]="questions">
   <thead>
     <tr>
       <th>Category</th>
@@ -19,4 +19,4 @@
       <td>{{ question.QuestionComments }}</td>
     </tr>
   </tbody>
-</table>
+</nz-table>

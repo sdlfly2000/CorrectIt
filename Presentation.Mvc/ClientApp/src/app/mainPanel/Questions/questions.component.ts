@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { QuestionService } from './question.service';
 import { QuestionModel } from './Models/question.model';
@@ -8,10 +8,14 @@ import { QuestionModel } from './Models/question.model';
   templateUrl: './questions.component.html',
   providers: [QuestionService]
 })
-export class QuestionComponent {
+export class QuestionComponent implements OnInit {
   public questions: QuestionModel[];
 
   constructor(private questionService: QuestionService) {
+    
+  }
+
+  ngOnInit(): void {
     this.getQuestions();
   }
 
