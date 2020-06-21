@@ -31,6 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\navHeader\navHeader.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application.Services\Application.Services.csproj" />
     <ProjectReference Include="..\Application.WorkerService\Application.WorkerService.csproj" />
     <ProjectReference Include="..\Common.Core.DependencyInjection\Common.Core.DependencyInjection.csproj" />
@@ -41,6 +45,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\mainPanel\Questions\Models\question.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mainPanel\Questions\question.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\navHeader\navHeader.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

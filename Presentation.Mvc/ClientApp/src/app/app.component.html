@@ -15,13 +15,13 @@
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Question Albums</a>
+            <a routerLink="/welcome" (click)="onClickQuestionAlbums('Question Albums')">Question Albums</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Questions</a>
+            <a (click)="onClickQuestionAlbums('Questions')">Questions</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Answers</a>
+            <a (click)="onClickQuestionAlbums('Answers')">Answers</a>
           </li>
         </ul>
       </li>
@@ -38,14 +38,14 @@
     <nz-header>
       <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
+          <i class="trigger"
+             nz-icon
+             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
         </span>
       </div>
     </nz-header>
     <nz-content>
+      <navHeader [breadcrumbs]="pBreadcrumbs"></navHeader>
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
