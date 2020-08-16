@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Common.Core.Cache;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Exercises.Aspects
 {
-    public interface IQuestionAspect
+    public interface IQuestionAspect : ICache
     {
         string QuestionCode { get; set; }
         string QuestionCategory { get; set; }

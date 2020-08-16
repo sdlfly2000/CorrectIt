@@ -1,4 +1,5 @@
-﻿using Common.Core.DependencyInjection;
+﻿using Common.Core.Cache;
+using Common.Core.DependencyInjection;
 using Domain.Exercises.Aspects;
 using Domain.Service.Exercises.Gateways.Loaders;
 using Domain.Service.Exercises.Gateways.Loaders.Mappers;
@@ -22,6 +23,7 @@ namespace Domain.Service.Exercises.Loaders
             _mapper = mappper;
         }
 
+        [AspectCache(typeof(IQuestionAspect))]
         public IQuestionAspect Load(string code)
         {
             return _mapper.Map(_repository.LoadAll().FirstOrDefault(q => q.QuestionId.ToString().Equals(code)));

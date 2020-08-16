@@ -1,3 +1,4 @@
+using Common.Core.Cache;
 using Common.Core.DependencyInjection;
 using Infrastructure.Data.Sql;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,7 @@ namespace Presentation.Mvc
             });
 
             DIModule.RegisterDependency(services);
+            CacheModule.RegisterCache();
 
             services.AddDbContext<CorrectItDbContext>(
                 options =>
