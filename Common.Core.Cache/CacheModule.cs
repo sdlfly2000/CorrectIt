@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,8 +8,11 @@ namespace Common.Core.Cache
 {
     public static class CacheModule
     {
-        public static void RegisterCache()
+        private static IServiceCollection _services;
+
+        public static void RegisterCache(IServiceCollection services)
         {
+            _services = services;
             RegisterDomain("Domain.Services");
         }
 
@@ -35,6 +39,17 @@ namespace Common.Core.Cache
 
             var cacheTypes = cacheMethods.Cast<AspectCacheAttribute>().ToList();
 
+            foreach(var cacheType in cacheTypes)
+            {
+                var iService = (cacheType as AspectCacheAttribute).IService;
+                var iResponse = (cacheType as AspectCacheAttribute).IResponse;
+                var response = Activator.CreateInstance(iResponse);
+                _services.AddTransient(iService, (provider) =>
+                {
+                    var target = provider.GetService(iService);
+                    return new Interceptor<>();
+                });
+            }     
         }
 
         #endregion

@@ -31,7 +31,7 @@ namespace Presentation.Mvc
             });
 
             DIModule.RegisterDependency(services);
-            CacheModule.RegisterCache();
+            CacheModule.RegisterCache(services);
 
             services.AddDbContext<CorrectItDbContext>(
                 options =>
