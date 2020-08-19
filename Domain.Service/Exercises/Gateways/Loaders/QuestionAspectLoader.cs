@@ -23,7 +23,7 @@ namespace Domain.Service.Exercises.Loaders
             _mapper = mappper;
         }
 
-        [AspectCache(typeof(IQuestionAspect))]
+        [AspectCache(typeof(IQuestionAspectLoader))]
         public IQuestionAspect Load(string code)
         {
             return _mapper.Map(_repository.LoadAll().FirstOrDefault(q => q.QuestionId.ToString().Equals(code)));

@@ -2,16 +2,16 @@
 
 namespace Common.Core.Cache
 {
-    public class Interceptor<TResponse> where TResponse : class
+    public class Interceptor<T> where T : ICached
     {
-        private ICache<TResponse> _cache;
+        private readonly ICache<T> _cache;
 
-        public Interceptor(ICache<TResponse> cache)
+        public Interceptor(ICache<T> cache)
         {
             _cache = cache;
         }
 
-        public TResponse Load(string code)
+        public T Load(string code)
         {
             Before(code);
             return _cache.Load(code);

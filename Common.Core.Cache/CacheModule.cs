@@ -41,13 +41,11 @@ namespace Common.Core.Cache
 
             foreach(var cacheType in cacheTypes)
             {
-                var iService = (cacheType as AspectCacheAttribute).IService;
-                var iResponse = (cacheType as AspectCacheAttribute).IResponse;
-                var response = Activator.CreateInstance(iResponse);
+                var iService = cacheType.IService;
                 _services.AddTransient(iService, (provider) =>
                 {
                     var target = provider.GetService(iService);
-                    return new Interceptor<>();
+                    return new Interceptor<ICached>((ICache<ICached>)target);
                 });
             }     
         }
