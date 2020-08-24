@@ -29,10 +29,7 @@ namespace Presentation.Mvc
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-
-            DIModule.RegisterDependency(services);
-            CacheModule.RegisterCache(services);
-
+            
             services.AddDbContext<CorrectItDbContext>(
                 options =>
                     options.UseMySql(
@@ -41,6 +38,10 @@ namespace Presentation.Mvc
                         { 
                             b.MigrationsAssembly("Infrastructure.Data.Sql");     
                         }));
+
+            DIModule.RegisterDependency(services);
+
+            //CacheModule.RegisterCache(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

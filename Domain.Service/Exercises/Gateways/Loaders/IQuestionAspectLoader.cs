@@ -1,5 +1,6 @@
 ﻿using Domain.Exercises.Aspects;
 using System.Collections.Generic;
+using Common.Core.Cache;
 
 namespace Domain.Service.Exercises.Gateways.Loaders
 {
@@ -7,6 +8,6 @@ namespace Domain.Service.Exercises.Gateways.Loaders
     {
         IQuestionAspect Load(string code);
 
-        List<IQuestionAspect> LoadAll();
+        IList<IQuestionAspect> LoadAll();
     }
 }

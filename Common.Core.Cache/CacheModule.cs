@@ -9,10 +9,12 @@ namespace Common.Core.Cache
     public static class CacheModule
     {
         private static IServiceCollection _services;
+        private static IServiceProvider _serviceProvider;
 
         public static void RegisterCache(IServiceCollection services)
         {
             _services = services;
+            _serviceProvider = services.BuildServiceProvider();
             RegisterDomain("Domain.Services");
         }
 
@@ -42,12 +44,14 @@ namespace Common.Core.Cache
             foreach(var cacheType in cacheTypes)
             {
                 var iService = cacheType.IService;
-                _services.AddTransient(iService, (provider) =>
-                {
-                    var target = provider.GetService(iService);
-                    return new Interceptor<ICached>((ICache<ICached>)target);
-                });
-            }     
+                var implementor = _serviceProvider.GetService(iService);
+                //if (implementor.GetType() == typeof(ICache<ICached>))
+                //{
+                    var interceptor = new Interceptor<ICached>((ICache<ICached>)implementor);
+                    var interceptorDescriptor = new ServiceDescriptor(iService, interceptor);
+                    _services.Add(interceptorDescriptor);
+                //}
+            }    
         }
 
         #endregion
