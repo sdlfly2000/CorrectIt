@@ -10,6 +10,7 @@ namespace Common.Core.DependencyInjection
         {
             RegisterDomain(services, "Infrastructure.Data.Sql");
             RegisterDomain(services, "Infrastructure.Data.File");
+            RegisterDomain(services, "Infrastructure.Cache.Redis");
             RegisterDomain(services, "Domain.Services");
             RegisterDomain(services, "Application.Services");
             RegisterDomain(services, "Application.WorkerService");

@@ -24,7 +24,22 @@ namespace Domain.Exercises.Aspects.Cache
             return questionAspects;
         }
 
+        public override IQuestionAspect Load(string code)
+        {
+            return base.Load(code);
+        }
+
         public IQuestionAspect Before(string Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQuestionAspect SetCache(string key, IQuestionAspect value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQuestionAspect GetCache(string key)
         {
             throw new NotImplementedException();
         }
