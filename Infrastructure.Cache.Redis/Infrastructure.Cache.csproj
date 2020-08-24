@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Infrastructure.Cache</AssemblyName>
+    <RootNamespace>Infrastructure.Cache</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Redis\" />
+  </ItemGroup>
+
+</Project>

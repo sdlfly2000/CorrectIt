@@ -1,19 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Core.Cache;
-using Common.Core.DependencyInjection;
 using Domain.Exercises.Aspects;
 using Domain.Service.Exercises.Gateways.Loaders;
 using Domain.Service.Exercises.Gateways.Loaders.Mappers;
-
 using Infrastructure.Data.Sql.Questions;
 
 namespace Domain.Service.Exercises.Loaders
 {
-    using System;
-
-
-    public class QuestionAspectLoader : IQuestionAspectLoader, ICache<IQuestionAspect>
+    public class QuestionAspectLoader : IQuestionAspectLoader
     {
         private IQuestionRepository _repository;
         private IQuestionAspectMapper _mapper;

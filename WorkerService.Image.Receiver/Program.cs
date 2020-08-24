@@ -27,6 +27,7 @@ namespace WorkerService.Image.Receiver
                                     b => b.MigrationsAssembly("Infrastructure.Data.Sql")),
                                 optionsLifetime: ServiceLifetime.Singleton);
                             services.AddHostedService<Worker>();
+                            services.AddMemoryCache();
                         });
     }
 }

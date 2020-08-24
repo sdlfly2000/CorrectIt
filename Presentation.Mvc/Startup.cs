@@ -1,4 +1,3 @@
-using Common.Core.Cache;
 using Common.Core.DependencyInjection;
 using Infrastructure.Data.Sql;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +37,8 @@ namespace Presentation.Mvc
                         { 
                             b.MigrationsAssembly("Infrastructure.Data.Sql");     
                         }));
+
+            services.AddMemoryCache();
 
             DIModule.RegisterDependency(services);
 
