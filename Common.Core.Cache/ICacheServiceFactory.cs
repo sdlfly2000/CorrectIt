@@ -4,6 +4,6 @@
     {
         object Get(string Code);
 
-        void Set(string Code, object value);
+        object Set(string Code, object value);
     }
 }

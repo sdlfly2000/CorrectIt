@@ -18,9 +18,9 @@ namespace Common.Core.Cache.MemoryCache
             return _memoryCache.Get(Code);
         }
 
-        public void Set(string Code, object value)
+        public object Set(string Code, object value)
         {
-            _memoryCache.Set(Code, value);
+            return _memoryCache.Set(Code, value);
         }
     }
 }

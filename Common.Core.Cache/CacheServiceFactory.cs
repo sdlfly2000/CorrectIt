@@ -35,9 +35,9 @@ namespace Common.Core.Cache
                     : null;
         }
 
-        public void Set(string Code, object value)
+        public object Set(string Code, object value)
         {
-            _memoryCacheProcess.Set(Code, value);
+            return _memoryCacheProcess.Set(Code, value);
         }
 
         private bool IsMemoryCache()

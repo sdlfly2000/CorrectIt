@@ -3,9 +3,9 @@ using Domain.Service.Exercises.Gateways.Loaders.Mappers;
 using Infrastructure.Data.Sql.Questions;
 using Common.Core.DependencyInjection;
 using Domain.Service.Exercises.Gateways.Loaders;
-using System;
 using System.Collections.Generic;
 using Common.Core.Cache;
+using System.Linq;
 
 namespace Domain.Exercises.Aspects.Cache
 {
@@ -25,8 +25,9 @@ namespace Domain.Exercises.Aspects.Cache
 
         public override IList<IQuestionAspect> LoadAll()
         {
-            var questionAspects = new List<IQuestionAspect>();
-            questionAspects = (List<IQuestionAspect>)base.LoadAll();
+            var questionAspects = (List<IQuestionAspect>)base.LoadAll();
+
+            questionAspects.Select(q => SetCache(q.QuestionCode, q));
 
             return questionAspects;
         }
@@ -45,9 +46,9 @@ namespace Domain.Exercises.Aspects.Cache
             return questionAspect;
         }
 
-        public void SetCache(string key, IQuestionAspect value)
+        public object SetCache(string key, IQuestionAspect value)
         {
-            _cacheServiceFactory.Set(key, value);
+            return _cacheServiceFactory.Set(key, value);
         }
 
         public IQuestionAspect GetCache(string key)
