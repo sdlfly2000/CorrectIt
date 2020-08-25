@@ -5,15 +5,22 @@ using Common.Core.DependencyInjection;
 using Domain.Service.Exercises.Gateways.Loaders;
 using System;
 using System.Collections.Generic;
+using Common.Core.Cache;
 
 namespace Domain.Exercises.Aspects.Cache
 {
     [ServiceLocate(typeof(IQuestionAspectLoader))]
     public class QuestionAspectLoaderCache : QuestionAspectLoader, ICacheProxy<IQuestionAspect>
     {
-        public QuestionAspectLoaderCache(IQuestionAspectMapper mappper, IQuestionRepository repository)
+        private readonly ICacheServiceFactory _cacheServiceFactory;
+
+        public QuestionAspectLoaderCache(
+            IQuestionAspectMapper mappper, 
+            IQuestionRepository repository,
+            ICacheServiceFactory cacheServiceFactory)
             : base(mappper, repository)
         {
+            _cacheServiceFactory = cacheServiceFactory;
         }
 
         public override IList<IQuestionAspect> LoadAll()
@@ -26,22 +33,26 @@ namespace Domain.Exercises.Aspects.Cache
 
         public override IQuestionAspect Load(string code)
         {
-            return base.Load(code);
+            var questionAspect = GetCache(code);
+            if (questionAspect != null)
+            {
+                return questionAspect;
+            }
+
+            questionAspect = base.Load(code);
+            SetCache(code, questionAspect);
+
+            return questionAspect;
         }
 
-        public IQuestionAspect Before(string Code)
+        public void SetCache(string key, IQuestionAspect value)
         {
-            throw new NotImplementedException();
-        }
-
-        public IQuestionAspect SetCache(string key, IQuestionAspect value)
-        {
-            throw new NotImplementedException();
+            _cacheServiceFactory.Set(key, value);
         }
 
         public IQuestionAspect GetCache(string key)
         {
-            throw new NotImplementedException();
+            return (QuestionAspect)_cacheServiceFactory.Get(key);
         }
     }
 }

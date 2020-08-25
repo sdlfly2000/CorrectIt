@@ -1,6 +1,6 @@
-﻿namespace Common.Core.Cache.MemoryCache
+﻿namespace Common.Core.Cache
 {
-    public interface IMemoryCacheProcess
+    public interface ICacheServiceFactory
     {
         object Get(string Code);
 
