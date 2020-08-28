@@ -9,7 +9,6 @@ using System.Linq;
 
 namespace Domain.Exercises.Aspects.Cache
 {
-    [ServiceLocate(typeof(IQuestionAspectLoader))]
     public class QuestionAspectLoaderCache : QuestionAspectLoader, ICacheProxy<IQuestionAspect>
     {
         private readonly ICacheServiceFactory _cacheServiceFactory;
