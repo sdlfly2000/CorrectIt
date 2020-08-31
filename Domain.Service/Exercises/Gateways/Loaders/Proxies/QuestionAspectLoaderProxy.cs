@@ -7,11 +7,10 @@ using Domain.Service.Exercises.Loaders;
 using Infrastructure.Data.Sql.Questions;
 using System.Reflection;
 using Common.Core.AOP;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Domain.Services.Exercises.Gateways.Loaders.Proxies
 {
-    using Microsoft.Extensions.Caching.Memory;
-
     [ServiceLocate(typeof(IQuestionAspectLoader))]
     public class QuestionAspectLoaderProxy : IQuestionAspectLoader
     {
@@ -28,7 +27,7 @@ namespace Domain.Services.Exercises.Gateways.Loaders.Proxies
 
             _quotationQuestionAspectLoaderDecorator = DispatchProxy.Create<IQuestionAspectLoader, CacheProxy>();
             ((CacheProxy)_quotationQuestionAspectLoaderDecorator).Wrapped = _questionAspectLoader;
-            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).CacheAction = new CacheAction(memoryCache);
+            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).CacheAction = new CacheAction<QuestionAspect>(memoryCache);
         }
 
         public IQuestionAspect Load(string code)

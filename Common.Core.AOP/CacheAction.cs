@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Caching.Memory;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Common.Core.AOP
 {
-    using System.Linq;
-
-    public class CacheAction : IAopAction
+    public class CacheAction<T>: ICacheAction<T> where T : ICacheAspect
     {
         private readonly IMemoryCache _memoryCache;
 
@@ -22,6 +22,11 @@ namespace Common.Core.AOP
         public object AfterAction(MethodInfo targetMethod, object[] args)
         {
             var obj = args.Last();
+
+            if(obj is List<T>)
+            {
+                ((List<T>)obj).Select(o => _memoryCache.Set(o.Code, o));                
+            }
 
             return obj;
         }

@@ -22,5 +22,7 @@ namespace Domain
         public string QuestionCreatedBy { get => _questionAspect.QuestionCreatedBy; set => _questionAspect.QuestionCreatedBy = value; }
         public string QuestionComments { get => _questionAspect.QuestionComments; set => _questionAspect.QuestionComments = value; }
         public List<IAnswer> Answers { get => _questionAspect.Answers; set => _questionAspect.Answers = value; }
+
+        public string Code => QuestionCode;
     }
 }

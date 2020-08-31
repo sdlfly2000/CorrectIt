@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
+using System.Linq;
 
 namespace Common.Core.AOP
 {
-    using System.Linq;
-
     public class CacheProxy : CommonProxy
     {
-        public CacheAction CacheAction { get; set; }
+        public ICacheAction<ICacheAspect> CacheAction { get; set; }
         
         protected override object Invoke(MethodInfo targetMethod, object[] args)
         {
