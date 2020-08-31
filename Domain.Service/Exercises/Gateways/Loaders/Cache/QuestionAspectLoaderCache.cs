@@ -2,7 +2,6 @@
 using Domain.Service.Exercises.Gateways.Loaders.Mappers;
 using Infrastructure.Data.Sql.Questions;
 using Common.Core.DependencyInjection;
-using Domain.Service.Exercises.Gateways.Loaders;
 using System.Collections.Generic;
 using Common.Core.Cache;
 using System.Linq;

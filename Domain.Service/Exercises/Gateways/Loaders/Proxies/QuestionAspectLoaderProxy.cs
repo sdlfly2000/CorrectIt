@@ -10,6 +10,8 @@ using Common.Core.AOP;
 
 namespace Domain.Services.Exercises.Gateways.Loaders.Proxies
 {
+    using Microsoft.Extensions.Caching.Memory;
+
     [ServiceLocate(typeof(IQuestionAspectLoader))]
     public class QuestionAspectLoaderProxy : IQuestionAspectLoader
     {
@@ -19,15 +21,14 @@ namespace Domain.Services.Exercises.Gateways.Loaders.Proxies
 
         public QuestionAspectLoaderProxy(
             IQuestionAspectMapper mappper,
-            IQuestionRepository repository)
+            IQuestionRepository repository,
+            IMemoryCache memoryCache)
         {
             _questionAspectLoader = new QuestionAspectLoader(mappper, repository);
 
             _quotationQuestionAspectLoaderDecorator = DispatchProxy.Create<IQuestionAspectLoader, CacheProxy>();
             ((CacheProxy)_quotationQuestionAspectLoaderDecorator).Wrapped = _questionAspectLoader;
-  
-            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).GetCache = (m, o) => new object();
-            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).SetCache = (t, x) => new object();
+            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).CacheAction = new CacheAction(memoryCache);
         }
 
         public IQuestionAspect Load(string code)

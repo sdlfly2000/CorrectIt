@@ -1,26 +1,31 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Common.Core.AOP
 {
-    public class CacheProxy : DispatchProxy
-    {
-        public object Wrapped { get; set; }
-        public Func<MethodInfo, object[], object> GetCache { get; set; }
-        public Func<MethodInfo, object, object> SetCache { get; set; }
+    using System.Linq;
 
+    public class CacheProxy : CommonProxy
+    {
+        public CacheAction CacheAction { get; set; }
+        
         protected override object Invoke(MethodInfo targetMethod, object[] args)
         {
-            var obj = GetCache(targetMethod, args);
-
-            if (obj != null)
+            object obj;
+            if (args.Length > 0)
             {
-                return obj;
+                obj = CacheAction.BeforeAction(targetMethod, args);
+
+                if (obj != null)
+                {
+                    return obj;
+                }
             }
 
             obj = targetMethod.Invoke(Wrapped, args);
 
-            return SetCache(targetMethod, obj);
+            var parameters = args.Append(obj).ToArray();
+
+            return CacheAction.AfterAction(targetMethod, parameters);
         }
     }
 }
