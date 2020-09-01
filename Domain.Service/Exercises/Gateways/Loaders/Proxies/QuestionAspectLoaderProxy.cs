@@ -27,7 +27,7 @@ namespace Domain.Services.Exercises.Gateways.Loaders.Proxies
 
             _quotationQuestionAspectLoaderDecorator = DispatchProxy.Create<IQuestionAspectLoader, CacheProxy>();
             ((CacheProxy)_quotationQuestionAspectLoaderDecorator).Wrapped = _questionAspectLoader;
-            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).CacheAction = new CacheAction<QuestionAspect>(memoryCache);
+            ((CacheProxy)_quotationQuestionAspectLoaderDecorator).CacheAction = new CacheAction<IQuestionAspect>(memoryCache);
         }
 
         public IQuestionAspect Load(string code)

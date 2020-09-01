@@ -8,6 +8,7 @@
       <th>Created By</th>
       <th>Created On</th>
       <th>Comments</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,11 @@
       <td>{{ question.QuestionCreatedBy }}</td>
       <td>{{ question.QuestionCreatedOn | date:'short' }}</td>
       <td>{{ question.QuestionComments }}</td>
+      <td>
+        <button nz-button nzShape="circle" >
+          <i nz-icon [nzType]="'folder-open'"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </nz-table>

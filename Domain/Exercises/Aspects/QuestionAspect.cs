@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Domain.Exercises.Aspects
 {
-    public class QuestionAspect : IQuestionAspect, ICacheAspect
+    public class QuestionAspect : IQuestionAspect
     {
         public string QuestionCode { get; set; }
         public string QuestionCategory { get; set; }
