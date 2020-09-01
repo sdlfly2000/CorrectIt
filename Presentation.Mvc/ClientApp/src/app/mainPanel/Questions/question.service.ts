@@ -13,4 +13,8 @@ export class QuestionService {
   public retrieveQuestions(): Observable<QuestionModel[]> {
     return this.http.get<QuestionModel[]>(this.baseUrl + 'api/Question/Get');    
   }
+
+  public retrieveQuestionDetails(Code: string): Observable<QuestionModel> {
+    return this.http.get<QuestionModel>(this.baseUrl + 'api/Question/GetDetails/' + Code);
+  }
 }
