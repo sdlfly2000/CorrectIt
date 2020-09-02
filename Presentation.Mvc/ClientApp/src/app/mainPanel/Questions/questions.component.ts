@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { QuestionService } from './question.service';
 import { QuestionModel } from './Models/question.model';
@@ -11,7 +12,7 @@ import { QuestionModel } from './Models/question.model';
 export class QuestionComponent implements OnInit {
   public questions: QuestionModel[];
 
-  constructor(private questionService: QuestionService) {
+  constructor(private questionService: QuestionService, private router: Router) {
     
   }
 
@@ -27,6 +28,10 @@ export class QuestionComponent implements OnInit {
         this.questions.push(this.Map(model));
       }
     }, error => console.error(error));
+  }
+
+  public openQuestionDetails(Code:string): void {
+    this.router.navigateByUrl(`QuestionDetails/${Code}`);
   }
 
   private Map(questionModel: any): QuestionModel {

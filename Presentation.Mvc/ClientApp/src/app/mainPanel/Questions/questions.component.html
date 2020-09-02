@@ -19,7 +19,7 @@
       <td>{{ question.QuestionCreatedOn | date:'short' }}</td>
       <td>{{ question.QuestionComments }}</td>
       <td>
-        <button nz-button nzShape="circle" >
+        <button nz-button nzShape="circle" (click)="openQuestionDetails(question.QuestionCode)">
           <i nz-icon [nzType]="'folder-open'"></i>
         </button>
       </td>
