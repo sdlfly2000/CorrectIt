@@ -19,6 +19,11 @@ namespace Application.Services.Questions
             return _questionProcess.Get();
         }
 
+        public QuestionsResponse Get(string questionCode)
+        {
+            return _questionProcess.Get(questionCode);
+        }
+
         public QuestionsResponse Get(QuestionsRequest request)
         {
             return _questionProcess.Get(request);

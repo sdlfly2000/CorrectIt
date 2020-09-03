@@ -30,6 +30,17 @@ namespace Application.Services.Questions.Processes
             };
         }
 
+        public QuestionsResponse Get(string questionCode)
+        {
+            return new QuestionsResponse
+           {
+                QuestionModels = new List<QuestionModel>
+                 {
+                     Map(_exerciseGateway.Load(new GetByQuestionCodeCriterion { Code = questionCode }))
+                 }
+           };
+        }
+
         public QuestionsResponse Get(QuestionsRequest request)
         {
             var exercises = new List<IExercise>();

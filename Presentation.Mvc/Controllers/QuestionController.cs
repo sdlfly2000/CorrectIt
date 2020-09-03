@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 namespace Presentation.Mvc.Controllers
 {
+    using System.Linq;
+
+    using Application.Services.Questions.Contractors;
+
     [Route("api/[controller]/[Action]")]
     [ApiController]
     public class QuestionController : ControllerBase
@@ -31,9 +35,10 @@ namespace Presentation.Mvc.Controllers
         }
 
         // PUT: api/Question/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet("{questionCode}")]
+        public QuestionModel GetDetails(string questionCode)
         {
+            return _questionService.Get(questionCode).QuestionModels.FirstOrDefault();
         }
     }
 }

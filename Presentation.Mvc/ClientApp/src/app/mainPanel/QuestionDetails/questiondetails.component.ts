@@ -18,7 +18,7 @@ export class QuestionDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.Code = this.activatedRoute.snapshot.paramMap.get("Code");
+    this.Code = this.activatedRoute.snapshot.paramMap.get("code");
     this.getQuestionDetails(this.Code);
   }
 

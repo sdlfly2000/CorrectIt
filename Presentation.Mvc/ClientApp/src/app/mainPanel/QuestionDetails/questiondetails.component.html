@@ -1,8 +1,8 @@
-<form nz-form>
+<form nz-form *ngIf="questionDetails">
   <nz-form-item>
     <nz-form-label [nzSpan]="6" nzFor="QuestionCode">Question Code</nz-form-label>
     <nz-form-control [nzSpan]="14">
-      <input nz-input name="QuestionCode" id="QuestionCode" [ngModel]="questionDetails.QuestionCode">
+      <input nz-input name="QuestionCode" [(ngModel)]="questionDetails.QuestionCode">
     </nz-form-control>
   </nz-form-item>
 </form>

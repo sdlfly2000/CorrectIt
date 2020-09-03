@@ -28,6 +28,11 @@ namespace Common.Core.AOP
                 ((List<T>)obj).Select(o => _memoryCache.Set(o.Code, o));                
             }
 
+            if (obj is T)
+            {
+                _memoryCache.Set(((T)obj).Code, obj);
+            }
+
             return obj;
         }
     }

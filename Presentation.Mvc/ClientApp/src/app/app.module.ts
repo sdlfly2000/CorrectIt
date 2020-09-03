@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './mainPanel/Questions/questions.component';
+import { QuestionDetailsComponent } from './mainPanel/QuestionDetails/questiondetails.component';
 import { NavHeaderComponent } from './navHeader/navHeader.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     QuestionComponent,
+    QuestionDetailsComponent,
     NavHeaderComponent
   ],
   imports: [
