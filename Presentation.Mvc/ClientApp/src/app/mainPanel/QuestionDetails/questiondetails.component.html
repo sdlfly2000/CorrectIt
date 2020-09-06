@@ -1,8 +1,44 @@
 <form nz-form *ngIf="questionDetails">
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="QuestionCode">Question Code</nz-form-label>
-    <nz-form-control [nzSpan]="14">
-      <input nz-input name="QuestionCode" [(ngModel)]="questionDetails.QuestionCode">
+    <nz-form-label [nzSpan]="3" nzFor="QuestionCode">Question Code</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input class="ant-input" name="QuestionCode" id="QuestionCode" [(ngModel)]="questionDetails.QuestionCode" [disabled]="true" />
     </nz-form-control>
   </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="3" nzFor="QuestionTitle">Question Title</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input class="ant-input" name="QuestionTitle" id="QuestionTitle" [(ngModel)]="questionDetails.QuestionTitle" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="3" nzFor="QuestionCategory">Question Title</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input class="ant-input" name="QuestionCategory" id="QuestionCategory" [(ngModel)]="questionDetails.QuestionCategory" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="3" nzFor="QuestionComments">Question Title</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input class="ant-input" name="QuestionComments" id="QuestionComments" [(ngModel)]="questionDetails.QuestionComments" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="3" nzFor="QuestionCreatedBy">Question Title</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input class="ant-input" name="QuestionCreatedBy" id="QuestionCreatedBy" [(ngModel)]="questionDetails.QuestionCreatedBy" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="3" nzFor="QuestionCreatedOn">Question Title</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input class="ant-input" name="QuestionCreatedOn" id="QuestionCreatedOn" [(ngModel)]="questionDetails.QuestionCreatedOn" />
+    </nz-form-control>
+  </nz-form-item>
+
 </form>

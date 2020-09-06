@@ -33,6 +33,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\mainPanel\QuestionDetails\questiondetails.component.ts" />
     <None Remove="ClientApp\src\app\navHeader\navHeader.component.ts" />
+    <None Remove="ClientApp\src\app\ngzorro.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +49,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\mainPanel\Questions\Models\question.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\mainPanel\Questions\question.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\navHeader\navHeader.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ngzorro.module.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
