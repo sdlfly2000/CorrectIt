@@ -15,10 +15,10 @@
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome" (click)="onClickQuestionAlbums('Question Albums')">Question Albums</a>
+            <a (click)="onClickQuestionAlbums('Question Albums')">Question Albums</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a (click)="onClickQuestionAlbums('Questions')">Questions</a>
+            <a routerLink="" (click)="onClickQuestionAlbums('Questions')">Questions</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a (click)="onClickQuestionAlbums('Answers')">Answers</a>
